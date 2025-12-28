@@ -21,26 +21,36 @@ export async function POST(request) {
         // but now we prioritize checking Stripe for REAL promo codes.
         if (promoCode) {
             try {
-                // Search for active promo codes matching the user's code
+                // 1. Try finding a Promotion Code (Customer facing code)
                 const promotions = await stripe.promotionCodes.list({
                     code: promoCode,
                     active: true,
                     limit: 1,
                 });
 
-                if (promotions.data.length > 0) {
-                    const promo = promotions.data[0];
-                    const coupon = promo.coupon;
-                    couponId = coupon.id; // Save specific object if needed
+                let coupon = null;
 
+                if (promotions.data.length > 0) {
+                    coupon = promotions.data[0].coupon;
+                } else {
+                    // 2. Fallback: Try finding a direct Coupon ID (or Name if valid ID)
+                    try {
+                        coupon = await stripe.coupons.retrieve(promoCode);
+                        if (!coupon.valid) coupon = null;
+                    } catch (e) {
+                        // Not a valid coupon ID either
+                    }
+                }
+
+                if (coupon) {
+                    couponId = coupon.id;
                     if (coupon.percent_off) {
                         finalAmount = Math.round(amount * (100 - coupon.percent_off) / 100);
                     } else if (coupon.amount_off) {
-                        // amount_off is in cents
                         finalAmount = Math.max(0, amount - (coupon.amount_off / 100));
                     }
                 }
-                // Legacy hardcoded check (optional, keeping it just in case user relies on it)
+                // Legacy hardcoded check
                 else if (promoCode.toUpperCase() === "PRESIDENTE") {
                     finalAmount = Math.round(amount * 0.8);
                 }
