@@ -11,18 +11,31 @@ export async function POST(request) {
     }
 
     try {
-        const { amount } = await request.json();
+        const { amount, promoCode } = await request.json();
+
+        let finalAmount = amount;
+
+        // Simple MVP Coupon Logic (Server-side validation)
+        if (promoCode && promoCode.toUpperCase() === "PRESIDENTE") {
+            finalAmount = Math.round(amount * 0.8); // 20% Discount
+        }
 
         // Create a PaymentIntent with the order amount and currency
         const paymentIntent = await stripe.paymentIntents.create({
-            amount: amount * 100, // Stripe expects cents
+            amount: finalAmount * 100, // Stripe expects cents
             currency: "eur",
             automatic_payment_methods: {
                 enabled: true,
             },
+            metadata: {
+                coupon: promoCode ? promoCode.toUpperCase() : 'NONE'
+            }
         });
 
-        return Response.json({ clientSecret: paymentIntent.client_secret });
+        return Response.json({
+            clientSecret: paymentIntent.client_secret,
+            amount: finalAmount
+        });
     } catch (error) {
         console.error("Internal Error:", error);
         return Response.json(

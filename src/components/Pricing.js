@@ -8,21 +8,45 @@ import { getPrice } from "@/utils/pricing";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 export default function Pricing() {
-    const [clientSecret, setClientSecret] = useState("");
     const [price, setPrice] = useState(200);
+    const [originalPrice, setOriginalPrice] = useState(200);
+    const [coupon, setCoupon] = useState("");
+    const [couponMessage, setCouponMessage] = useState("");
 
+    // Initial Load
     useEffect(() => {
         const currentPrice = getPrice();
         setPrice(currentPrice);
+        setOriginalPrice(currentPrice);
+        createPaymentIntent(currentPrice, "");
+    }, []);
 
+    const createPaymentIntent = (amount, code) => {
         fetch("/api/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ amount: currentPrice }),
+            body: JSON.stringify({ amount: originalPrice || amount, promoCode: code }),
         })
             .then((res) => res.json())
-            .then((data) => setClientSecret(data.clientSecret));
-    }, []);
+            .then((data) => {
+                setClientSecret(data.clientSecret);
+                if (data.amount) setPrice(data.amount);
+
+                if (code) {
+                    if (data.amount < (originalPrice || amount)) {
+                        setCouponMessage("¡Cupón aplicado correctamente!");
+                    } else {
+                        setCouponMessage("Cupón no válido.");
+                        setPrice(originalPrice);
+                    }
+                }
+            });
+    };
+
+    const handleApplyCoupon = () => {
+        if (!coupon) return;
+        createPaymentIntent(originalPrice, coupon);
+    };
 
     const appearance = {
         theme: 'night',

@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { PaymentElement, LinkAuthenticationElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { Loader2 } from "lucide-react";
 
 export default function CheckoutForm({ price }) {
     const stripe = useStripe();
     const elements = useElements();
+    const [email, setEmail] = useState('');
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -22,6 +23,7 @@ export default function CheckoutForm({ price }) {
             elements,
             confirmParams: {
                 return_url: `${window.location.origin}/success`,
+                receipt_email: email, // Enviar email para recibo
             },
         });
 
@@ -36,7 +38,26 @@ export default function CheckoutForm({ price }) {
 
     return (
         <form id="payment-form" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
+            <LinkAuthenticationElement
+                id="link-authentication-element"
+                onChange={(e) => setEmail(e.value.email)}
+            />
+            <PaymentElement
+                id="payment-element"
+                options={{
+                    layout: "tabs",
+                    fields: {
+                        billingDetails: {
+                            name: 'auto',
+                            email: 'never', // Handled by LinkAuthenticationElement
+                            address: {
+                                country: 'auto',
+                                postalCode: 'auto',
+                            }
+                        }
+                    }
+                }}
+            />
 
             <button
                 disabled={isLoading || !stripe || !elements}
