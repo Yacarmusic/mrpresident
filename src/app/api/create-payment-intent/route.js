@@ -22,23 +22,39 @@ export async function POST(request) {
         if (promoCode) {
             try {
                 // 1. Try finding a Promotion Code (Customer facing code)
-                const promotions = await stripe.promotionCodes.list({
+                // Note: Stripe promo codes are CASE SENSITIVE - try exact match first
+                let promotions = await stripe.promotionCodes.list({
                     code: promoCode,
                     active: true,
                     limit: 1,
                 });
+
+                // If no match, try uppercase version
+                if (promotions.data.length === 0) {
+                    promotions = await stripe.promotionCodes.list({
+                        code: promoCode.toUpperCase(),
+                        active: true,
+                        limit: 1,
+                    });
+                }
 
                 let coupon = null;
 
                 if (promotions.data.length > 0) {
                     coupon = promotions.data[0].coupon;
                 } else {
-                    // 2. Fallback: Try finding a direct Coupon ID (or Name if valid ID)
+                    // 2. Fallback: Try finding a direct Coupon ID
                     try {
                         coupon = await stripe.coupons.retrieve(promoCode);
                         if (!coupon.valid) coupon = null;
                     } catch (e) {
-                        // Not a valid coupon ID either
+                        // Try uppercase coupon ID
+                        try {
+                            coupon = await stripe.coupons.retrieve(promoCode.toUpperCase());
+                            if (!coupon.valid) coupon = null;
+                        } catch (e2) {
+                            // Not a valid coupon ID
+                        }
                     }
                 }
 
@@ -47,7 +63,8 @@ export async function POST(request) {
                     if (coupon.percent_off) {
                         finalAmount = Math.round(amount * (100 - coupon.percent_off) / 100);
                     } else if (coupon.amount_off) {
-                        finalAmount = Math.max(0, amount - (coupon.amount_off / 100));
+                        // amount_off is in cents in Stripe!
+                        finalAmount = Math.max(1, amount - (coupon.amount_off / 100));
                     }
                 }
                 // Legacy hardcoded check
@@ -55,7 +72,7 @@ export async function POST(request) {
                     finalAmount = Math.round(amount * 0.8);
                 }
             } catch (err) {
-                console.warn("Coupon lookup failed", err);
+                console.error("Coupon lookup failed:", err.message);
             }
         }
 
