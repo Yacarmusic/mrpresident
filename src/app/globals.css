@@ -30,7 +30,7 @@ body {
 
 /* --- Fixed Background Layer --- */
 .fixed-background-layer {
-  background-image: url('/hero.jpg');
+  background-image: url('/hero.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 25%;
