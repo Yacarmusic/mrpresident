@@ -8,6 +8,7 @@ import { getPrice } from "@/utils/pricing";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 export default function Pricing() {
+    const [clientSecret, setClientSecret] = useState("");
     const [price, setPrice] = useState(200);
     const [originalPrice, setOriginalPrice] = useState(200);
     const [coupon, setCoupon] = useState("");
