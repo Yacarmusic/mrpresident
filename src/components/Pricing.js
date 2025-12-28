@@ -9,8 +9,8 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 export default function Pricing() {
     const [clientSecret, setClientSecret] = useState("");
-    const [price, setPrice] = useState(200);
-    const [originalPrice, setOriginalPrice] = useState(200);
+    const [price, setPrice] = useState(360);
+    const [originalPrice, setOriginalPrice] = useState(360);
     const [coupon, setCoupon] = useState("");
     const [couponMessage, setCouponMessage] = useState("");
 
