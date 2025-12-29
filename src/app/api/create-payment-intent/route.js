@@ -21,12 +21,12 @@ export async function POST(request) {
         // but now we prioritize checking Stripe for REAL promo codes.
         if (promoCode) {
             try {
-                // 1. Try finding a Promotion Code (Customer facing code)
-                // Note: Stripe promo codes are CASE SENSITIVE - try exact match first
+                // 1. Try finding a Promotion Code - use expand to get full coupon data
                 let promotions = await stripe.promotionCodes.list({
                     code: promoCode,
                     active: true,
                     limit: 1,
+                    expand: ['data.coupon'],
                 });
 
                 // If no match, try uppercase version
@@ -35,6 +35,7 @@ export async function POST(request) {
                         code: promoCode.toUpperCase(),
                         active: true,
                         limit: 1,
+                        expand: ['data.coupon'],
                     });
                 }
 
@@ -84,8 +85,10 @@ export async function POST(request) {
                 enabled: true,
             },
             metadata: {
+                product: 'MR_PRESIDENT_COURSE',
                 coupon: promoCode ? promoCode.toUpperCase() : 'NONE'
-            }
+            },
+            description: 'Mr. President - Curso de Networking'
         });
 
         return Response.json({

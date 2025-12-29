@@ -25,6 +25,7 @@ export async function POST(request) {
                     code: promoCode,
                     active: true,
                     limit: 1,
+                    expand: ['data.coupon'],
                 });
 
                 debugInfo.exactMatch = promotions.data.length;
@@ -35,6 +36,7 @@ export async function POST(request) {
                         code: promoCode.toUpperCase(),
                         active: true,
                         limit: 1,
+                        expand: ['data.coupon'],
                     });
                     debugInfo.uppercaseMatch = promotions.data.length;
                 }
@@ -94,8 +96,10 @@ export async function POST(request) {
         const paymentIntent = await stripe.paymentIntents.update(paymentIntentId, {
             amount: finalAmount * 100,
             metadata: {
+                product: 'MR_PRESIDENT_COURSE',
                 coupon: promoCode ? promoCode.toUpperCase() : 'NONE'
-            }
+            },
+            description: 'Mr. President - Curso de Networking'
         });
 
         return Response.json({
