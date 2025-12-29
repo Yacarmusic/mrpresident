@@ -42,9 +42,12 @@ export async function POST(request) {
                 let coupon = null;
 
                 if (promotions.data.length > 0) {
-                    coupon = promotions.data[0].coupon;
+                    const promoData = promotions.data[0];
+                    coupon = promoData.coupon;
                     debugInfo.foundVia = 'promotionCode';
-                    debugInfo.couponId = coupon.id;
+                    debugInfo.promoCodeId = promoData.id;
+                    debugInfo.couponId = coupon?.id || 'undefined';
+                    debugInfo.couponObject = coupon ? 'exists' : 'null';
                 } else {
                     // Fallback: Try direct Coupon ID
                     try {
