@@ -6,6 +6,7 @@ const cinzel = Cinzel({ subsets: ["latin"], variable: "--font-cinzel" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata = {
+  metadataBase: new URL('https://mrpresident.es'),
   title: "Mr. President | El conocimiento sin contactos se queda en el aula",
   description: "Curso exclusivo de networking y contactos por Francisco Nicolás.",
   icons: {
@@ -14,6 +15,8 @@ export const metadata = {
   openGraph: {
     title: "Mr. President | El conocimiento sin contactos se queda en el aula",
     description: "Curso exclusivo de networking y contactos por Francisco Nicolás.",
+    url: 'https://mrpresident.es',
+    siteName: 'Mr. President',
     images: [
       {
         url: '/opengraph-image.png',
@@ -22,6 +25,7 @@ export const metadata = {
         alt: 'Mr. President Logo',
       },
     ],
+    locale: 'es_ES',
     type: 'website',
   },
 };
