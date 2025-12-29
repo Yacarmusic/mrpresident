@@ -14,51 +14,76 @@ export async function POST(request) {
         const { paymentIntentId, amount, promoCode } = await request.json();
 
         let finalAmount = amount;
+        let couponFound = false;
+        let debugInfo = { searched: promoCode, mode: process.env.STRIPE_SECRET_KEY?.startsWith('sk_live') ? 'LIVE' : 'TEST' };
 
         // Check promo code
         if (promoCode) {
             try {
-                // Try finding a Promotion Code
+                // Try finding a Promotion Code (exact match)
                 let promotions = await stripe.promotionCodes.list({
                     code: promoCode,
                     active: true,
                     limit: 1,
                 });
 
+                debugInfo.exactMatch = promotions.data.length;
+
+                // Try uppercase
                 if (promotions.data.length === 0) {
                     promotions = await stripe.promotionCodes.list({
                         code: promoCode.toUpperCase(),
                         active: true,
                         limit: 1,
                     });
+                    debugInfo.uppercaseMatch = promotions.data.length;
                 }
 
                 let coupon = null;
 
                 if (promotions.data.length > 0) {
                     coupon = promotions.data[0].coupon;
+                    debugInfo.foundVia = 'promotionCode';
+                    debugInfo.couponId = coupon.id;
                 } else {
                     // Fallback: Try direct Coupon ID
                     try {
                         coupon = await stripe.coupons.retrieve(promoCode);
-                        if (!coupon.valid) coupon = null;
+                        if (coupon.valid) {
+                            debugInfo.foundVia = 'directCouponId';
+                            debugInfo.couponId = coupon.id;
+                        } else {
+                            coupon = null;
+                        }
                     } catch (e) {
                         try {
                             coupon = await stripe.coupons.retrieve(promoCode.toUpperCase());
-                            if (!coupon.valid) coupon = null;
-                        } catch (e2) { }
+                            if (coupon.valid) {
+                                debugInfo.foundVia = 'directCouponIdUppercase';
+                                debugInfo.couponId = coupon.id;
+                            } else {
+                                coupon = null;
+                            }
+                        } catch (e2) {
+                            debugInfo.couponRetrieveError = e2.message;
+                        }
                     }
                 }
 
                 if (coupon) {
+                    couponFound = true;
+                    debugInfo.percent_off = coupon.percent_off;
+                    debugInfo.amount_off = coupon.amount_off;
+
                     if (coupon.percent_off) {
                         finalAmount = Math.round(amount * (100 - coupon.percent_off) / 100);
                     } else if (coupon.amount_off) {
+                        // amount_off is in cents in Stripe!
                         finalAmount = Math.max(1, amount - (coupon.amount_off / 100));
                     }
                 }
             } catch (err) {
-                console.error("Coupon lookup failed:", err.message);
+                debugInfo.error = err.message;
             }
         }
 
@@ -72,7 +97,9 @@ export async function POST(request) {
 
         return Response.json({
             success: true,
-            amount: finalAmount
+            amount: finalAmount,
+            couponFound,
+            debug: debugInfo
         });
     } catch (error) {
         console.error("Update Error:", error);
@@ -82,3 +109,4 @@ export async function POST(request) {
         );
     }
 }
+

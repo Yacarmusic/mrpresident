@@ -55,6 +55,9 @@ export default function Pricing() {
             });
             const data = await res.json();
 
+            // Debug info - check browser console
+            console.log('Coupon API Response:', data);
+
             if (data.success && data.amount < originalPrice) {
                 setPrice(data.amount);
                 setCouponMessage("¡Cupón aplicado correctamente!");
