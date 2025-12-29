@@ -45,12 +45,27 @@ export async function POST(request) {
 
                 if (promotions.data.length > 0) {
                     const promoData = promotions.data[0];
-                    // Stripe API change Sept 2025: coupon is now nested under 'promotion' OR directly accessible
-                    coupon = promoData.coupon || promoData.promotion?.coupon;
                     debugInfo.foundVia = 'promotionCode';
                     debugInfo.promoCodeId = promoData.id;
-                    debugInfo.hasCouponDirect = !!promoData.coupon;
-                    debugInfo.hasCouponNested = !!promoData.promotion?.coupon;
+
+                    // Check what we have - could be object, string ID, or nested
+                    let rawCoupon = promoData.coupon || promoData.promotion?.coupon;
+                    debugInfo.rawCouponType = typeof rawCoupon;
+                    debugInfo.rawCouponValue = typeof rawCoupon === 'string' ? rawCoupon : (rawCoupon?.id || 'no-id');
+
+                    // If coupon is a string (just the ID), fetch the full coupon
+                    if (typeof rawCoupon === 'string') {
+                        try {
+                            coupon = await stripe.coupons.retrieve(rawCoupon);
+                            debugInfo.fetchedCouponById = true;
+                        } catch (e) {
+                            debugInfo.couponFetchError = e.message;
+                        }
+                    } else if (rawCoupon && typeof rawCoupon === 'object') {
+                        coupon = rawCoupon;
+                        debugInfo.usedCouponObject = true;
+                    }
+
                     debugInfo.couponId = coupon?.id || 'undefined';
                     debugInfo.couponObject = coupon ? 'exists' : 'null';
                 } else {
