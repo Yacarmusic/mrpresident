@@ -4,12 +4,16 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
     {
-        question: "¿CUÁNDO ESTARÁ DISPONIBLE EL CURSO?",
-        answer: "El contenido completo se liberará el 15 de enero. Hasta entonces, estamos en fase de preventa exclusiva con precio reducido."
+        question: "¿CUÁNDO COMIENZA EL CURSO?",
+        answer: "El curso comienza el 19 de enero de 2025. Ese día se liberará todo el contenido y tendrás acceso inmediato a todos los módulos."
+    },
+    {
+        question: "¿ES EN DIRECTO O PUEDO VERLO A MI RITMO?",
+        answer: "El curso es 100% asíncrono. Puedes ver el contenido cuando quieras, desde donde quieras, a tu propio ritmo. Las lecciones están grabadas en vídeo de alta calidad y tienes acceso de por vida."
     },
     {
         question: "¿POR QUÉ DEBERÍA COMPRAR AHORA EN PREVENTA?",
-        answer: "Porque el precio subirá. Ahora mismo está a 200€. El 1 de enero sube a 300€ y el día del lanzamiento (15 de enero) a 400€. Entrar ahora te garantiza el mejor precio posible."
+        answer: "Porque el precio subirá. El 1 de enero sube considerablemente y el día del lanzamiento (19 de enero) aún más. Entrar ahora te garantiza el mejor precio posible."
     },
     {
         question: "¿ES REALMENTE DIFERENTE A OTROS CURSOS DE NETWORKING?",
@@ -34,10 +38,6 @@ const faqs = [
     {
         question: "¿EL CURSO INCLUYE ACCESO A TU RED DE CONTACTOS PERSONAL?",
         answer: "No. Te enseño a pescar, no te doy el pez. El valor del curso es que aprendas a generar tu propia independencia relacional, no que dependas de la mía."
-    },
-    {
-        question: "¿CUÁNDO TENDRÉ ACCESO AL CONTENIDO DESPUÉS DE COMPRAR EN PREVENTA?",
-        answer: "Recibirás tus credenciales inmediatamente, pero el contenido de los módulos se desbloqueará el día 15 de enero."
     }
 ];
 

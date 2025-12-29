@@ -31,7 +31,7 @@ export default function Manifesto() {
                         Descubrí que cada contacto es una puerta y cada puerta te lleva a tres más. Tengo más de 10.000 contactos, gente que toma las decisiones que importan. Esto no lo enseñan en ninguna universidad.
                     </p>
                     <p>
-                        <strong>Esto es el poder real.</strong> Hoy te presento la mejora formación de networking y contactos. Te voy a enseñar a conseguirlos y llegar arriba del todo.
+                        <strong>Esto es el poder real.</strong> Hoy te presento la mejor formación de networking y contactos. Te voy a enseñar a conseguirlos y llegar arriba del todo.
                     </p>
 
                     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem', opacity: 0.8 }}>

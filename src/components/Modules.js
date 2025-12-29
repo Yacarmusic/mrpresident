@@ -4,7 +4,7 @@ const modules = [
     {
         id: "01",
         title: "GEOGRAFÍA DEL PODER",
-        description: "Mira, la mayoría de la gente piensa que el poder está en los despachos con vistas. Error. Los que realmente mueven los hilos son invisibles. Aprenderás dónde está el poder de verdad: palcos del Bernabéu, cenas privadas, consejos de administración. Entenderás cómo funcionan la banca, la energía y los family offices."
+        description: "Mira, la mayoría de la gente piensa que el poder está en los despachos con vistas. Error. Los que realmente mueven los hilos son invisibles. Aprenderás dónde está el poder de verdad: palcos del Bernabéu, cenas privadas, consejos de administración. Entenderás cómo funcionan la banca, la política, la energía, los medios de comunicación, los family offices y los eventos privados."
     },
     {
         id: "02",
@@ -25,6 +25,11 @@ const modules = [
         id: "05",
         title: "CONOCIMIENTO CULTURAL MÍNIMO",
         description: "Tu seguro de vida social. Qué saber de vinos, destinos que marcan clase (Gstaad sí, Dubai depende) y referencias culturales. Aprenderás a moverte con naturalidad desde una cata en La Rioja hasta el Real Club Náutico sin parecer un impostor."
+    },
+    {
+        id: "BONUS",
+        title: "INTELIGENCIA ARTIFICIAL APLICADA A LOS CONTACTOS",
+        description: "Las carreras ya no sirven. Los títulos ya no sirven. Lo que te diferencia hoy es dominar la IA. Te enseñaré a usar herramientas de inteligencia artificial para investigar contactos antes de una reunión, preparar conversaciones estratégicas, automatizar seguimientos y multiplicar tu capacidad de gestión de relaciones. El que no domina esto, ya va tarde."
     }
 ];
 

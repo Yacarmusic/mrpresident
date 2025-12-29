@@ -117,51 +117,9 @@ export default function Pricing() {
                         </p>
                     </div>
 
-                    {/* Coupon Input */}
-                    <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', marginBottom: '1rem', maxWidth: '300px', margin: '0 auto 1rem auto' }}>
-                        <input
-                            type="text"
-                            placeholder="Código promocional"
-                            value={coupon}
-                            onChange={(e) => setCoupon(e.target.value)}
-                            style={{
-                                padding: '0.5rem',
-                                borderRadius: '4px',
-                                border: '1px solid #444',
-                                background: '#222',
-                                color: 'white',
-                                width: '100%'
-                            }}
-                        />
-                        <button
-                            onClick={handleApplyCoupon}
-                            style={{
-                                background: 'var(--color-gold)',
-                                color: 'black',
-                                border: 'none',
-                                padding: '0.5rem 1rem',
-                                borderRadius: '4px',
-                                fontWeight: 'bold',
-                                cursor: 'pointer'
-                            }}
-                        >
-                            Aplicar
-                        </button>
-                    </div>
-                    {couponMessage && (
-                        <p style={{
-                            color: couponMessage.includes('correctament') ? '#22c55e' :
-                                couponMessage.includes('Verificando') ? '#c5a059' : '#ef4444',
-                            fontSize: '0.9rem',
-                            marginBottom: '1rem'
-                        }}>
-                            {couponMessage}
-                        </p>
-                    )}
-
                     <p className="text-muted" style={{ fontSize: '0.875rem' }}>Pago único. Acceso de por vida.</p>
                     <p style={{ color: '#fff', marginTop: '1rem', fontStyle: 'italic', letterSpacing: '0.05em' }}>
-                        COMIENZA EL 15 DE ENERO
+                        COMIENZA EL 19 DE ENERO
                     </p>
                 </div>
 

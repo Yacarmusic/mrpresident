@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Manifesto />
       <VSL />
+      <Manifesto />
       <Modules />
       <Pricing />
       <FAQ />
