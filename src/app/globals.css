@@ -380,12 +380,18 @@ li {
   text-shadow: 0 2px 5px black;
   margin-bottom: 0.5rem;
   /* Space between number and title on mobile */
+  flex-shrink: 0;
+  /* Prevent shrinking */
 }
 
 @media (min-width: 768px) {
   .module-number {
     font-size: 2rem;
     margin-bottom: 0;
+    min-width: 8rem;
+    /* Increased to fit "BONUS" and align titles */
+    text-align: right;
+    /* visual balance */
   }
 }
 
