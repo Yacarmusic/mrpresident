@@ -90,9 +90,11 @@ function SuccessContent() {
                     color: '#ffffff',
                     textShadow: '1px 1px 4px rgba(0,0,0,0.8)'
                 }}>
-                    Recibirás un correo electrónico de confirmación en los próximos minutos.
+                    Recibirás un correo electrónico de confirmación de tu compra en los próximos minutos.
                     <br />
                     <span style={{ color: '#aaa', fontSize: '0.9rem' }}>
+                        Mantente atento a tu bandeja de entrada los próximos días, recibirás más información importante.
+                        <br />
                         Si no lo recibes, revisa tu carpeta de spam o contáctanos con tu número de pedido.
                     </span>
                 </p>
