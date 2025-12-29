@@ -42,7 +42,9 @@ export async function POST(request) {
                 let coupon = null;
 
                 if (promotions.data.length > 0) {
-                    coupon = promotions.data[0].coupon;
+                    const promoData = promotions.data[0];
+                    // Stripe API change Sept 2025: coupon may be nested under 'promotion'
+                    coupon = promoData.coupon || promoData.promotion?.coupon;
                 } else {
                     // 2. Fallback: Try finding a direct Coupon ID
                     try {

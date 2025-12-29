@@ -45,9 +45,12 @@ export async function POST(request) {
 
                 if (promotions.data.length > 0) {
                     const promoData = promotions.data[0];
-                    coupon = promoData.coupon;
+                    // Stripe API change Sept 2025: coupon is now nested under 'promotion' OR directly accessible
+                    coupon = promoData.coupon || promoData.promotion?.coupon;
                     debugInfo.foundVia = 'promotionCode';
                     debugInfo.promoCodeId = promoData.id;
+                    debugInfo.hasCouponDirect = !!promoData.coupon;
+                    debugInfo.hasCouponNested = !!promoData.promotion?.coupon;
                     debugInfo.couponId = coupon?.id || 'undefined';
                     debugInfo.couponObject = coupon ? 'exists' : 'null';
                 } else {
