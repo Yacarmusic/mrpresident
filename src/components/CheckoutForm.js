@@ -7,6 +7,7 @@ export default function CheckoutForm({ price }) {
     const stripe = useStripe();
     const elements = useElements();
     const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -17,13 +18,24 @@ export default function CheckoutForm({ price }) {
             return;
         }
 
+        if (!name.trim()) {
+            setMessage("Por favor, introduce tu nombre completo.");
+            return;
+        }
+
         setIsLoading(true);
 
         const { error } = await stripe.confirmPayment({
             elements,
             confirmParams: {
                 return_url: `${window.location.origin}/success`,
-                receipt_email: email, // Enviar email para recibo
+                receipt_email: email,
+                payment_method_data: {
+                    billing_details: {
+                        name: name,
+                        email: email,
+                    }
+                }
             },
         });
 
@@ -38,6 +50,37 @@ export default function CheckoutForm({ price }) {
 
     return (
         <form id="payment-form" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {/* Name Input */}
+            <div>
+                <label htmlFor="name-input" style={{
+                    display: 'block',
+                    marginBottom: '0.5rem',
+                    fontSize: '0.875rem',
+                    color: '#a0a0a0'
+                }}>
+                    Nombre completo *
+                </label>
+                <input
+                    id="name-input"
+                    type="text"
+                    placeholder="Tu nombre y apellidos"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    style={{
+                        width: '100%',
+                        padding: '0.75rem 1rem',
+                        borderRadius: '6px',
+                        border: '1px solid #444',
+                        backgroundColor: '#1a1a1a',
+                        color: '#fff',
+                        fontSize: '1rem',
+                        outline: 'none',
+                        boxSizing: 'border-box'
+                    }}
+                />
+            </div>
+
             <LinkAuthenticationElement
                 id="link-authentication-element"
                 onChange={(e) => setEmail(e.value.email)}
@@ -48,7 +91,7 @@ export default function CheckoutForm({ price }) {
                     layout: "tabs",
                     fields: {
                         billingDetails: {
-                            name: 'auto',
+                            name: 'never', // We collect it ourselves above
                             email: 'never', // Handled by LinkAuthenticationElement
                             address: {
                                 country: 'auto',

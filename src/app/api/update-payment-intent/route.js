@@ -15,12 +15,11 @@ export async function POST(request) {
 
         let finalAmount = amount;
         let couponFound = false;
-        let debugInfo = { searched: promoCode, mode: process.env.STRIPE_SECRET_KEY?.startsWith('sk_live') ? 'LIVE' : 'TEST' };
 
         // Check promo code
         if (promoCode) {
             try {
-                // Try finding a Promotion Code (exact match)
+                // Try finding a Promotion Code
                 let promotions = await stripe.promotionCodes.list({
                     code: promoCode,
                     active: true,
@@ -28,9 +27,7 @@ export async function POST(request) {
                     expand: ['data.coupon'],
                 });
 
-                debugInfo.exactMatch = promotions.data.length;
-
-                // Try uppercase
+                // Try uppercase if not found
                 if (promotions.data.length === 0) {
                     promotions = await stripe.promotionCodes.list({
                         code: promoCode.toUpperCase(),
@@ -38,66 +35,35 @@ export async function POST(request) {
                         limit: 1,
                         expand: ['data.coupon'],
                     });
-                    debugInfo.uppercaseMatch = promotions.data.length;
                 }
 
                 let coupon = null;
 
                 if (promotions.data.length > 0) {
                     const promoData = promotions.data[0];
-                    debugInfo.foundVia = 'promotionCode';
-                    debugInfo.promoCodeId = promoData.id;
-
-                    // Check what we have - could be object, string ID, or nested
                     let rawCoupon = promoData.coupon || promoData.promotion?.coupon;
-                    debugInfo.rawCouponType = typeof rawCoupon;
-                    debugInfo.rawCouponValue = typeof rawCoupon === 'string' ? rawCoupon : (rawCoupon?.id || 'no-id');
 
                     // If coupon is a string (just the ID), fetch the full coupon
                     if (typeof rawCoupon === 'string') {
-                        try {
-                            coupon = await stripe.coupons.retrieve(rawCoupon);
-                            debugInfo.fetchedCouponById = true;
-                        } catch (e) {
-                            debugInfo.couponFetchError = e.message;
-                        }
+                        coupon = await stripe.coupons.retrieve(rawCoupon);
                     } else if (rawCoupon && typeof rawCoupon === 'object') {
                         coupon = rawCoupon;
-                        debugInfo.usedCouponObject = true;
                     }
-
-                    debugInfo.couponId = coupon?.id || 'undefined';
-                    debugInfo.couponObject = coupon ? 'exists' : 'null';
                 } else {
                     // Fallback: Try direct Coupon ID
                     try {
                         coupon = await stripe.coupons.retrieve(promoCode);
-                        if (coupon.valid) {
-                            debugInfo.foundVia = 'directCouponId';
-                            debugInfo.couponId = coupon.id;
-                        } else {
-                            coupon = null;
-                        }
+                        if (!coupon.valid) coupon = null;
                     } catch (e) {
                         try {
                             coupon = await stripe.coupons.retrieve(promoCode.toUpperCase());
-                            if (coupon.valid) {
-                                debugInfo.foundVia = 'directCouponIdUppercase';
-                                debugInfo.couponId = coupon.id;
-                            } else {
-                                coupon = null;
-                            }
-                        } catch (e2) {
-                            debugInfo.couponRetrieveError = e2.message;
-                        }
+                            if (!coupon.valid) coupon = null;
+                        } catch (e2) { }
                     }
                 }
 
                 if (coupon) {
                     couponFound = true;
-                    debugInfo.percent_off = coupon.percent_off;
-                    debugInfo.amount_off = coupon.amount_off;
-
                     if (coupon.percent_off) {
                         finalAmount = Math.round(amount * (100 - coupon.percent_off) / 100);
                     } else if (coupon.amount_off) {
@@ -106,12 +72,12 @@ export async function POST(request) {
                     }
                 }
             } catch (err) {
-                debugInfo.error = err.message;
+                console.error("Coupon lookup failed:", err.message);
             }
         }
 
         // Update existing PaymentIntent
-        const paymentIntent = await stripe.paymentIntents.update(paymentIntentId, {
+        await stripe.paymentIntents.update(paymentIntentId, {
             amount: finalAmount * 100,
             metadata: {
                 product: 'MR_PRESIDENT_COURSE',
@@ -123,8 +89,7 @@ export async function POST(request) {
         return Response.json({
             success: true,
             amount: finalAmount,
-            couponFound,
-            debug: debugInfo
+            couponFound
         });
     } catch (error) {
         console.error("Update Error:", error);
@@ -134,4 +99,3 @@ export async function POST(request) {
         );
     }
 }
-
