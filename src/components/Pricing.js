@@ -9,51 +9,70 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 export default function Pricing() {
     const [clientSecret, setClientSecret] = useState("");
+    const [paymentIntentId, setPaymentIntentId] = useState("");
     const [price, setPrice] = useState(360);
     const [originalPrice, setOriginalPrice] = useState(360);
     const [coupon, setCoupon] = useState("");
     const [couponMessage, setCouponMessage] = useState("");
+    const [elementsKey, setElementsKey] = useState(0);
 
-    // Initial Load
+    // Initial Load - create PaymentIntent once
     useEffect(() => {
         const currentPrice = getPrice();
         setPrice(currentPrice);
         setOriginalPrice(currentPrice);
-        createPaymentIntent(currentPrice, "");
-    }, []);
 
-    const createPaymentIntent = (amount, code) => {
         fetch("/api/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ amount: originalPrice || amount, promoCode: code }),
+            body: JSON.stringify({ amount: currentPrice, promoCode: "" }),
         })
             .then((res) => res.json())
             .then((data) => {
-                setClientSecret(data.clientSecret);
-                if (data.amount) setPrice(data.amount);
-
-                if (code) {
-                    if (data.amount < (originalPrice || amount)) {
-                        setCouponMessage("¡Cupón aplicado correctamente!");
-                    } else {
-                        setCouponMessage("Cupón no válido.");
-                        setPrice(originalPrice);
-                    }
+                if (data.clientSecret) {
+                    setClientSecret(data.clientSecret);
+                    // Extract PaymentIntent ID from clientSecret (format: pi_xxx_secret_yyy)
+                    const piId = data.clientSecret.split('_secret_')[0];
+                    setPaymentIntentId(piId);
                 }
             });
-    };
+    }, []);
 
-    const handleApplyCoupon = () => {
-        if (!coupon) return;
-        createPaymentIntent(originalPrice, coupon);
+    const handleApplyCoupon = async () => {
+        if (!coupon || !paymentIntentId) return;
+
+        setCouponMessage("Verificando...");
+
+        try {
+            const res = await fetch("/api/update-payment-intent", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    paymentIntentId,
+                    amount: originalPrice,
+                    promoCode: coupon
+                }),
+            });
+            const data = await res.json();
+
+            if (data.success && data.amount < originalPrice) {
+                setPrice(data.amount);
+                setCouponMessage("¡Cupón aplicado correctamente!");
+                // Force Elements to refresh by changing key
+                setElementsKey(prev => prev + 1);
+            } else {
+                setCouponMessage("Cupón no válido.");
+            }
+        } catch (err) {
+            setCouponMessage("Error al aplicar cupón.");
+        }
     };
 
     const appearance = {
         theme: 'night',
         variables: {
             colorPrimary: '#c5a059',
-            colorBackground: '#1a1a1a', // This affects stripe element internal bg
+            colorBackground: '#1a1a1a',
             colorText: '#f5f5f5',
         },
     };
@@ -73,7 +92,12 @@ export default function Pricing() {
                     </p>
 
                     <div className="pricing-price" style={{ marginTop: '1rem', fontSize: '5rem' }}>
-                        360€
+                        {price}€
+                        {price < originalPrice && (
+                            <span style={{ fontSize: '1.5rem', color: '#888', textDecoration: 'line-through', marginLeft: '1rem' }}>
+                                {originalPrice}€
+                            </span>
+                        )}
                     </div>
 
                     <div style={{
@@ -124,7 +148,16 @@ export default function Pricing() {
                             Aplicar
                         </button>
                     </div>
-                    {couponMessage && <p style={{ color: couponMessage.includes('correctament') ? '#22c55e' : '#ef4444', fontSize: '0.9rem', marginBottom: '1rem' }}>{couponMessage}</p>}
+                    {couponMessage && (
+                        <p style={{
+                            color: couponMessage.includes('correctament') ? '#22c55e' :
+                                couponMessage.includes('Verificando') ? '#c5a059' : '#ef4444',
+                            fontSize: '0.9rem',
+                            marginBottom: '1rem'
+                        }}>
+                            {couponMessage}
+                        </p>
+                    )}
 
                     <p className="text-muted" style={{ fontSize: '0.875rem' }}>Pago único. Acceso de por vida.</p>
                     <p style={{ color: '#fff', marginTop: '1rem', fontStyle: 'italic', letterSpacing: '0.05em' }}>
@@ -134,7 +167,7 @@ export default function Pricing() {
 
                 <div className="pricing-card">
                     {clientSecret ? (
-                        <Elements options={options} stripe={stripePromise}>
+                        <Elements key={elementsKey} options={options} stripe={stripePromise}>
                             <CheckoutForm price={price} />
                         </Elements>
                     ) : (
@@ -145,3 +178,4 @@ export default function Pricing() {
         </section>
     );
 }
+
