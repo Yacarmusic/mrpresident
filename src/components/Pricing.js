@@ -82,7 +82,7 @@ export default function Pricing() {
     };
 
     return (
-        <section className="pricing-section section-padding">
+        <section id="pricing" className="pricing-section section-padding">
             <div className="container" style={{ maxWidth: '800px' }}>
                 <div className="text-center" style={{ marginBottom: '3rem' }}>
                     <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>ACCESO EXCLUSIVO</h2>

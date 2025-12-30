@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const faqs = [
     {
         question: "¿CUÁNDO COMIENZA EL CURSO?",
-        answer: "El curso comienza el 19 de enero de 2025. Ese día se liberará todo el contenido y tendrás acceso inmediato a todos los módulos."
+        answer: "El curso comienza el 19 de enero de 2026. Ese día se liberará todo el contenido y tendrás acceso inmediato a todos los módulos."
     },
     {
         question: "¿ES EN DIRECTO O PUEDO VERLO A MI RITMO?",

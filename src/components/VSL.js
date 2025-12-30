@@ -29,6 +29,16 @@ export default function VSL() {
                         </video>
                     </div>
                 </div>
+
+                <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+                    <a href="#pricing" className="btn-primary" style={{
+                        fontSize: '1.1rem',
+                        padding: '1rem 3rem',
+                        textShadow: '0 2px 4px rgba(0,0,0,0.5)'
+                    }}>
+                        QUIERO ACCEDER AHORA
+                    </a>
+                </div>
             </div>
         </section>
     );
