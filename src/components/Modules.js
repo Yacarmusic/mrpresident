@@ -25,12 +25,15 @@ const modules = [
         id: "05",
         title: "CONOCIMIENTO CULTURAL MÍNIMO",
         description: "Tu seguro de vida social. Qué saber de vinos, destinos que marcan clase (Gstaad sí, Dubai depende) y referencias culturales. Aprenderás a moverte con naturalidad desde una cata en La Rioja hasta el Real Club Náutico sin parecer un impostor."
-    },
+    }
+    /*
+    ,
     {
         id: "BONUS",
         title: "INTELIGENCIA ARTIFICIAL APLICADA A LOS CONTACTOS",
         description: "Las carreras ya no sirven. Los títulos ya no sirven. Lo que te diferencia hoy es dominar la IA. Te enseñaré a usar herramientas de inteligencia artificial para investigar contactos antes de una reunión, preparar conversaciones estratégicas, automatizar seguimientos y multiplicar tu capacidad de gestión de relaciones. El que no domina esto, ya va tarde."
     }
+    */
 ];
 
 export default function Modules() {
