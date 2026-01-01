@@ -100,6 +100,7 @@ export default function Pricing() {
                         )}
                     </div>
 
+                    {/* 
                     <div style={{
                         border: '1px solid var(--color-gold)',
                         padding: '1.5rem',
@@ -116,6 +117,7 @@ export default function Pricing() {
                             Nunca volverás a tener acceso a este sistema a este precio. <br />
                         </p>
                     </div>
+                    */}
 
                     <p className="text-muted" style={{ fontSize: '0.875rem' }}>Pago único. Acceso de por vida.</p>
                     <p style={{ color: '#fff', marginTop: '1rem', fontStyle: 'italic', letterSpacing: '0.05em' }}>
