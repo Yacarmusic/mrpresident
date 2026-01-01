@@ -4,6 +4,7 @@ import VSL from "@/components/VSL";
 import Modules from "@/components/Modules";
 import Pricing from "@/components/Pricing";
 import Newsletter from "@/components/Newsletter";
+import NewsletterPopup from "@/components/NewsletterPopup";
 import FAQ from "@/components/FAQ";
 import Link from "next/link";
 
@@ -17,6 +18,7 @@ export default function Home() {
       <Pricing />
       <FAQ />
       <Newsletter />
+      <NewsletterPopup />
 
       <footer className="footer" style={{ textAlign: 'center', padding: '2rem 1rem' }}>
         <div style={{ marginBottom: '1rem' }}>
