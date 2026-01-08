@@ -1,3 +1,4 @@
-// Manual price override
-return 560;
+export const getPrice = () => {
+    // Manual price override
+    return 560;
 };
