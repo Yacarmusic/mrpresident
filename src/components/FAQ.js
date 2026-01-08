@@ -13,7 +13,7 @@ const faqs = [
     },
     {
         question: "¿POR QUÉ DEBERÍA COMPRAR AHORA EN PREVENTA?",
-        answer: "Porque el precio subirá. El 7 de enero sube considerablemente y el día del lanzamiento (19 de enero) aún más. Entrar ahora te garantiza el mejor precio posible."
+        answer: "Porque el precio subirá. El 19 de enero sube considerablemente y el día del lanzamiento (19 de enero) aún más. Entrar ahora te garantiza el mejor precio posible."
     },
     {
         question: "¿ES REALMENTE DIFERENTE A OTROS CURSOS DE NETWORKING?",

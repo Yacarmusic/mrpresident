@@ -112,7 +112,7 @@ export default function Pricing() {
                             ⚠ ATENCIÓN: SUBIDA DE PRECIO INMINENTE
                         </p>
                         <p style={{ fontStyle: 'italic', marginBottom: '0' }}>
-                            El 7 de enero el precio subirá considerablemente. <br />
+                            El 19 de enero el precio subirá considerablemente. <br />
                             Nunca volverás a tener acceso a este sistema a este precio. <br />
                         </p>
                     </div>
