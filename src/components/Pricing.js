@@ -117,6 +117,49 @@ export default function Pricing() {
                         </p>
                     </div>
 
+                    {/* Coupon Section */}
+                    <div style={{ marginTop: '2rem', marginBottom: '1rem' }}>
+                        <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', maxWidth: '400px', margin: '0 auto' }}>
+                            <input
+                                type="text"
+                                placeholder="¿Tienes un código?"
+                                value={coupon}
+                                onChange={(e) => setCoupon(e.target.value)}
+                                style={{
+                                    padding: '0.75rem',
+                                    borderRadius: '4px',
+                                    border: '1px solid #444',
+                                    backgroundColor: '#222',
+                                    color: '#fff',
+                                    flex: 1
+                                }}
+                            />
+                            <button
+                                onClick={handleApplyCoupon}
+                                style={{
+                                    padding: '0.75rem 1.5rem',
+                                    borderRadius: '4px',
+                                    border: 'none',
+                                    backgroundColor: 'var(--color-gold)',
+                                    color: '#000',
+                                    fontWeight: 'bold',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                APLICAR
+                            </button>
+                        </div>
+                        {couponMessage && (
+                            <p style={{
+                                marginTop: '0.5rem',
+                                fontSize: '0.9rem',
+                                color: couponMessage.includes('correctamente') ? '#22c55e' : '#ef4444'
+                            }}>
+                                {couponMessage}
+                            </p>
+                        )}
+                    </div>
+
                     <p className="text-muted" style={{ fontSize: '0.875rem' }}>Pago único. Acceso de por vida.</p>
                     <p style={{ color: '#fff', marginTop: '1rem', fontStyle: 'italic', letterSpacing: '0.05em' }}>
                         COMIENZA EL 19 DE ENERO
