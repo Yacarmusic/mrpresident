@@ -1,4 +1,6 @@
 import { Cinzel, Inter } from "next/font/google";
+import { ClerkProvider } from '@clerk/nextjs'
+import { esES } from '@clerk/localizations'
 import "./globals.css";
 import FixedBackground from "@/components/FixedBackground";
 
@@ -32,11 +34,26 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
-      <body>
-        <FixedBackground />
-        <main className={`${cinzel.variable} ${inter.variable} text-white antialiased`}>{children}</main>
-      </body>
-    </html>
+    <ClerkProvider localization={esES} appearance={{
+      variables: {
+        colorPrimary: '#c5a059',
+        colorBackground: '#1a1a1a',
+        colorText: '#ffffff',
+        colorInputBackground: '#2d2d2d',
+        colorInputText: '#ffffff'
+      },
+      layout: {
+        socialButtonsPlacement: 'bottom',
+        privacyPageUrl: 'https://mrpresident.es/politica-privacidad',
+        termsPageUrl: 'https://mrpresident.es/aviso-legal'
+      }
+    }}>
+      <html lang="es">
+        <body>
+          <FixedBackground />
+          <main className={`${cinzel.variable} ${inter.variable} text-white antialiased`}>{children}</main>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
