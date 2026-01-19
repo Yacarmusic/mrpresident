@@ -219,6 +219,38 @@ li {
   }
 }
 
+/* Hero Button - Premium Gold Outline Style */
+.hero-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border: 2px solid var(--color-gold);
+  color: var(--color-gold);
+  background: rgba(0, 0, 0, 0.4);
+  font-family: var(--font-cinzel);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(5px);
+}
+
+.hero-button:hover {
+  background: var(--color-gold);
+  color: var(--color-black);
+  box-shadow: 0 0 30px rgba(197, 160, 89, 0.5);
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .hero-button {
+    padding: 1.2rem 3rem;
+    font-size: 1rem;
+  }
+}
+
 /* Fixed Logo Styles */
 .fixed-logo {
   position: fixed;
