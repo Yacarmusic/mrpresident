@@ -1,4 +1,5 @@
 "use client";
+import React from 'react';
 import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
 import { CheckCircle2, Circle, Menu, X, Lock } from 'lucide-react';
