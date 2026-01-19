@@ -34,20 +34,28 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider localization={esES} appearance={{
-      variables: {
-        colorPrimary: '#c5a059',
-        colorBackground: '#1a1a1a',
-        colorText: '#ffffff',
-        colorInputBackground: '#2d2d2d',
-        colorInputText: '#ffffff'
-      },
-      layout: {
-        socialButtonsPlacement: 'bottom',
-        privacyPageUrl: 'https://mrpresident.es/politica-privacidad',
-        termsPageUrl: 'https://mrpresident.es/aviso-legal'
-      }
-    }}>
+    <ClerkProvider
+      localization={{
+        ...esES,
+        unstable__errors: {
+          ...esES.unstable__errors,
+          device_verification_required: "Estás iniciando sesión desde un dispositivo nuevo. Estamos pidiendo verificación para mantener tu cuenta segura. SI NO LLEGA EL CÓDIGO, REVISE LA BANDEJA DE SPAM."
+        }
+      }}
+      appearance={{
+        variables: {
+          colorPrimary: '#c5a059',
+          colorBackground: '#1a1a1a',
+          colorText: '#ffffff',
+          colorInputBackground: '#2d2d2d',
+          colorInputText: '#ffffff'
+        },
+        layout: {
+          socialButtonsPlacement: 'bottom',
+          privacyPageUrl: 'https://mrpresident.es/politica-privacidad',
+          termsPageUrl: 'https://mrpresident.es/aviso-legal'
+        }
+      }}>
       <html lang="es">
         <body>
           <FixedBackground />

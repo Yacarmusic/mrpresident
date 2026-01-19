@@ -34,7 +34,15 @@ export default function Hero() {
                     El conocimiento sin contactos se queda en el aula
                 </motion.p>
 
-                {/* Button Removed by User Request */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 1.2 }}
+                >
+                    <a href="/curso" className="hero-button">
+                        ACCESO AL CURSO
+                    </a>
+                </motion.div>
             </div>
         </section>
     );

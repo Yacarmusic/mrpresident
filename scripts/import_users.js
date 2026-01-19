@@ -14,16 +14,21 @@ if (!secretKey) {
 const clerkClient = createClerkClient({ secretKey });
 
 async function importUsers() {
-    const csvPath = path.join(__dirname, 'users.csv');
+    const csvPath = path.join(__dirname, 'unified_customers.csv');
 
     if (!fs.existsSync(csvPath)) {
-        console.error("❌ ERROR: No encuentro el archivo 'users.csv' en la carpeta scripts/.");
+        console.error("❌ ERROR: No encuentro el archivo 'unified_customers.csv' en la carpeta scripts/.");
         process.exit(1);
     }
 
     const content = fs.readFileSync(csvPath, 'utf-8');
-    // Asumimos formato simple: un email por línea
-    const emails = content.split(/[\n,]+/).map(e => e.trim()).filter(e => e.includes('@'));
+
+    // Parseo línea por línea para el formato: Email,Name
+    const lines = content.split('\n');
+    const emails = lines
+        .slice(1) // Saltamos la cabecera (Email,Name)
+        .map(line => line.split(',')[0].trim()) // Tomamos lo que hay antes de la primera coma
+        .filter(email => email.includes('@') && email.length > 5); // Filtramos vacíos o inválidos
 
     console.log(`📋 Encontrados ${emails.length} correos. Empezando importación...\n`);
 
@@ -38,8 +43,8 @@ async function importUsers() {
         } catch (error) {
             console.error(`❌ Error con ${email}:`, error.errors?.[0]?.message || error.message);
         }
-        // Pequeña pausa para no saturar la API
-        await new Promise(r => setTimeout(r, 200));
+        // Pausa más larga (2s) para evitar error "Too many requests"
+        await new Promise(r => setTimeout(r, 2000));
     }
 
     console.log("\n✨ Proceso finalizado.");
