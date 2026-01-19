@@ -1,7 +1,13 @@
-"use client";
-import React from "react";
+import { usePathname } from "next/navigation";
 
 export default function FixedBackground() {
+    const pathname = usePathname();
+
+    // Don't show this background on the course area (it has its own theme)
+    if (pathname && pathname.startsWith('/curso')) {
+        return null;
+    }
+
     return (
         <div
             className="fixed-background-layer"

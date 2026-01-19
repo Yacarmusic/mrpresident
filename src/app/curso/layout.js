@@ -12,11 +12,12 @@ export default function CourseLayout({ children }) {
     const pathname = usePathname();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
-    if (!isLoaded) return <div className="flex items-center justify-center min-h-screen text-gold">Cargando...</div>;
+    if (!isLoaded) return <div className="flex items-center justify-center min-h-screen bg-black text-gold">Cargando...</div>;
 
     return (
-        <div className="flex min-h-screen bg-black text-white font-sans">
-            {/* Mobile Header */}
+        // Added isolate to create a new stacking context and bg-black/zinc-950 to ensure opacity
+        <div className="flex min-h-screen bg-zinc-950 text-white font-sans isolate selection:bg-gold selection:text-black">
+            {/* Mobile Header - Solid Background */}
             <div className="lg:hidden fixed top-0 left-0 w-full bg-zinc-900 border-b border-zinc-800 p-4 z-50 flex justify-between items-center">
                 <span className="font-cinzel text-gold font-bold">MR. PRESIDENT</span>
                 <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
