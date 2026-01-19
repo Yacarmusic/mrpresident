@@ -29,20 +29,27 @@ export const courseContent = [
     },
     {
         id: "modulo-2",
-        title: "MÓDULO 2: ACCESO Y APROXIMACIÓN",
+        title: "MÓDULO 2: PROTOCOLO DE ALTO NIVEL",
         locked: true,
-        lessons: [
-            {
-                id: "identificacion",
-                title: "Identificación de Objetivos",
-                vimeoId: ""
-            },
-            {
-                id: "primer-contacto",
-                title: "El Primer Contacto",
-                vimeoId: ""
-            },
-        ]
+        lessons: []
+    },
+    {
+        id: "modulo-3",
+        title: "MÓDULO 3: CONSEGUIR TU PADRINO",
+        locked: true,
+        lessons: []
+    },
+    {
+        id: "modulo-4",
+        title: "MÓDULO 4: COMUNICACIÓN E INTELIGENCIA EMOCIONAL",
+        locked: true,
+        lessons: []
+    },
+    {
+        id: "modulo-5",
+        title: "MÓDULO 5: CONOCIMIENTO CULTURAL MÍNIMO",
+        locked: true,
+        lessons: []
     }
 ];
 
