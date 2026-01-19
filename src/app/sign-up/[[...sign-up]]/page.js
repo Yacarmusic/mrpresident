@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { SignUp } from "@clerk/nextjs";
-import './signup.css';
+import '../signup.css';
 
 export default function SignUpPage() {
     return (
