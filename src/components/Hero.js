@@ -34,15 +34,7 @@ export default function Hero() {
                     El conocimiento sin contactos se queda en el aula
                 </motion.p>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 1.2 }}
-                >
-                    <a href="#vsl" className="btn-primary">
-                        Acceder al Sistema
-                    </a>
-                </motion.div>
+                {/* Button Removed by User Request */}
             </div>
         </section>
     );
