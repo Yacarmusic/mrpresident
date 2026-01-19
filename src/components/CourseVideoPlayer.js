@@ -7,6 +7,7 @@ import './video-player.css';
 
 export default function CourseVideoPlayer({ videoId, onComplete, title, lessonId }) {
     const containerRef = useRef(null);
+    const playerRef = useRef(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isCompleted, setIsCompleted] = useState(false);
 
@@ -21,6 +22,8 @@ export default function CourseVideoPlayer({ videoId, onComplete, title, lessonId
             byline: false,
             portrait: false
         });
+
+        playerRef.current = player;
 
         player.on('loaded', () => {
             setIsLoading(false);
@@ -39,6 +42,18 @@ export default function CourseVideoPlayer({ videoId, onComplete, title, lessonId
         };
     }, [videoId, onComplete, lessonId]);
 
+    const handleOverlayClick = () => {
+        if (playerRef.current) {
+            playerRef.current.getPaused().then((paused) => {
+                if (paused) {
+                    playerRef.current.play().catch(console.error);
+                } else {
+                    playerRef.current.pause().catch(console.error);
+                }
+            });
+        }
+    };
+
     return (
         <div className="video-player-container">
             {isLoading && (
@@ -47,8 +62,12 @@ export default function CourseVideoPlayer({ videoId, onComplete, title, lessonId
                 </div>
             )}
 
-            {/* Transparent overlay to discourage right-click save */}
-            <div className="video-protector" onContextMenu={(e) => e.preventDefault()}></div>
+            {/* Transparent overlay to block context menu but allow click-to-play */}
+            <div
+                className="video-protector"
+                onContextMenu={(e) => e.preventDefault()}
+                onClick={handleOverlayClick}
+            ></div>
 
             <div ref={containerRef} style={{ width: '100%', height: '100%' }}></div>
 
