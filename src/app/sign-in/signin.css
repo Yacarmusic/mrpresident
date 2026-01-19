@@ -1,0 +1,116 @@
+/* Sign In Page Styles */
+.signin-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+    background-color: #09090b;
+    /* Fallback/Base */
+}
+
+.signin-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.signin-title {
+    font-family: var(--font-cinzel);
+    font-size: 2.25rem;
+    color: #c5a059;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.signin-subtitle {
+    color: #71717a;
+    /* zinc-500 */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.signin-wrapper {
+    width: 100%;
+    max-width: 28rem;
+}
+
+.signin-footer-text {
+    margin-top: 2rem;
+    color: #52525b;
+    /* zinc-600 */
+    font-size: 0.75rem;
+    text-align: center;
+    max-width: 24rem;
+}
+
+/* Clerk Overrides targeting the classes we pass */
+.clerk-card {
+    background-color: rgba(24, 24, 27, 0.9);
+    /* zinc-900/90 */
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    /* gold/30 */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.clerk-subtitle {
+    color: #a1a1aa;
+    /* zinc-400 */
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.clerk-label {
+    color: rgba(197, 160, 89, 0.8);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.clerk-input {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid #27272a;
+    /* zinc-800 */
+    color: white;
+    border-radius: 0.5rem;
+}
+
+.clerk-input:focus {
+    border-color: rgba(197, 160, 89, 0.5);
+    outline: none;
+}
+
+.clerk-button {
+    background-color: #c5a059;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+}
+
+.clerk-button:hover {
+    background-color: rgba(197, 160, 89, 0.9);
+}
+
+.clerk-action-link {
+    color: rgba(197, 160, 89, 0.6);
+    font-size: 0.75rem;
+}
+
+.clerk-action-link:hover {
+    color: #c5a059;
+}
