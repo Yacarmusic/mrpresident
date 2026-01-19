@@ -39,43 +39,34 @@ export default function CourseLayout({ children }) {
                                 {module.locked && <Lock size={12} className="text-zinc-500" />}
                                 <span className={module.locked ? "opacity-50" : ""}>{module.title}</span>
                             </h3>
-                            <ul className="lesson-list">
-                                {module.lessons.map((lesson) => {
-                                    const path = `/curso/${module.id}/${lesson.id}`;
-                                    const isActive = pathname === path;
-                                    const progress = user?.publicMetadata?.progress || {};
-                                    const progressKey = `${module.id}-${lesson.id}`;
-                                    const isCompleted = progress[progressKey] === true;
+                            {!module.locked && (
+                                <ul className="lesson-list">
+                                    {module.lessons.map((lesson) => {
+                                        const path = `/curso/${module.id}/${lesson.id}`;
+                                        const isActive = pathname === path;
+                                        const progress = user?.publicMetadata?.progress || {};
+                                        const progressKey = `${module.id}-${lesson.id}`;
+                                        const isCompleted = progress[progressKey] === true;
 
-                                    if (module.locked) {
                                         return (
                                             <li key={lesson.id} className="lesson-item">
-                                                <div className="lesson-link locked">
-                                                    <Lock size={16} />
+                                                <Link
+                                                    href={path}
+                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                    className={`lesson-link ${isActive ? 'active' : ''}`}
+                                                >
+                                                    {isCompleted ? (
+                                                        <CheckCircle2 size={16} className="text-green-500 shrink-0" />
+                                                    ) : (
+                                                        <Circle size={16} className={`shrink-0 ${isActive ? 'text-gold' : 'text-zinc-600'}`} />
+                                                    )}
                                                     <span className="truncate">{lesson.title}</span>
-                                                </div>
+                                                </Link>
                                             </li>
                                         );
-                                    }
-
-                                    return (
-                                        <li key={lesson.id} className="lesson-item">
-                                            <Link
-                                                href={path}
-                                                onClick={() => setIsMobileMenuOpen(false)}
-                                                className={`lesson-link ${isActive ? 'active' : ''}`}
-                                            >
-                                                {isCompleted ? (
-                                                    <CheckCircle2 size={16} className="text-green-500 shrink-0" />
-                                                ) : (
-                                                    <Circle size={16} className={`shrink-0 ${isActive ? 'text-gold' : 'text-zinc-600'}`} />
-                                                )}
-                                                <span className="truncate">{lesson.title}</span>
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                                    })}
+                                </ul>
+                            )}
                         </div>
                     ))}
                 </div>
