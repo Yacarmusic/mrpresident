@@ -37,9 +37,9 @@ export default function RootLayout({ children }) {
     <ClerkProvider
       localization={{
         ...esES,
-        unstable__errors: {
-          ...esES.unstable__errors,
-          device_verification_required: "Estás iniciando sesión desde un dispositivo nuevo. Estamos pidiendo verificación para mantener tu cuenta segura. SI NO LLEGA EL CÓDIGO, REVISE LA BANDEJA DE SPAM."
+        signIn: {
+          ...esES.signIn,
+          newDeviceVerificationNotice: "Estás iniciando sesión desde un dispositivo nuevo. Estamos pidiendo verificación para mantener tu cuenta segura. SI NO LLEGA EL CÓDIGO, REVISA LA BANDEJA DE SPAM."
         }
       }}
       appearance={{
