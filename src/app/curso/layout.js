@@ -16,15 +16,13 @@ export default function CourseLayout({ children }) {
 
     return (
         <div className="flex min-h-screen bg-black text-white font-sans">
-            {/* Mobile Header */
-                // ... (rest of the file remains similar, but using courseContent)
-                // ... (rest of the file remains similar, but using courseContent)}
-                <div className="lg:hidden fixed top-0 left-0 w-full bg-zinc-900 border-b border-zinc-800 p-4 z-50 flex justify-between items-center">
-                    <span className="font-cinzel text-gold font-bold">MR. PRESIDENT</span>
-                    <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                        {isMobileMenuOpen ? <X /> : <Menu />}
-                    </button>
-                </div>
+            {/* Mobile Header */}
+            <div className="lg:hidden fixed top-0 left-0 w-full bg-zinc-900 border-b border-zinc-800 p-4 z-50 flex justify-between items-center">
+                <span className="font-cinzel text-gold font-bold">MR. PRESIDENT</span>
+                <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                    {isMobileMenuOpen ? <X /> : <Menu />}
+                </button>
+            </div>
 
             {/* Sidebar */}
             <aside className={`
