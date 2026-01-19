@@ -1,0 +1,134 @@
+/* Sign Up Page Styles - Inherits/Matches Sign In Logic */
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+    font-family: inherit;
+    background-color: #09090b;
+    /* Fallback */
+}
+
+/* Header Section */
+.signup-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.signup-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.25rem;
+    /* ~text-4xl */
+    color: #cca360;
+    /* Gold */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.signup-subtitle {
+    color: #a1a1aa;
+    /* Zinc 500 */
+    font-size: 0.75rem;
+    /* ~text-xs */
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+/* Wrapper for Clerk Component */
+.signup-wrapper {
+    width: 100%;
+    max-width: 28rem;
+    /* max-w-md */
+}
+
+/* Clerk Component Overrides - Targeting internal classes via appearance prop in JS */
+/* These classes match the prop strings we pass in React */
+.clerk-card {
+    background-color: rgba(24, 24, 27, 0.9) !important;
+    /* zinc-900/90 */
+    border: 1px solid rgba(204, 163, 96, 0.3) !important;
+    /* gold/30 */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(12px) !important;
+    border-radius: 0.75rem !important;
+    /* rounded-xl */
+    padding: 1.5rem !important;
+}
+
+.clerk-subtitle {
+    color: #a1a1aa !important;
+    /* zinc-400 */
+    font-size: 0.875rem !important;
+    /* text-sm */
+    margin-bottom: 1.5rem !important;
+    text-align: center !important;
+}
+
+.clerk-label {
+    color: rgba(204, 163, 96, 0.8) !important;
+    /* gold/80 */
+    font-size: 0.75rem !important;
+    /* text-xs */
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.clerk-input {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid #27272a !important;
+    /* zinc-800 */
+    color: white !important;
+    border-radius: 0.5rem !important;
+    padding: 0.75rem !important;
+    transition: border-color 0.2s !important;
+}
+
+.clerk-input:focus {
+    border-color: rgba(204, 163, 96, 0.5) !important;
+    outline: none !important;
+}
+
+.clerk-button {
+    background-color: #cca360 !important;
+    /* gold */
+    color: black !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-size: 0.875rem !important;
+    /* text-sm */
+    padding: 0.75rem !important;
+    border-radius: 0.5rem !important;
+    transition: all 0.2s !important;
+}
+
+.clerk-button:hover {
+    background-color: rgba(204, 163, 96, 0.9) !important;
+}
+
+.clerk-action-link {
+    color: rgba(204, 163, 96, 0.6) !important;
+    font-size: 0.75rem !important;
+}
+
+.clerk-action-link:hover {
+    color: #cca360 !important;
+}
+
+/* Footer Section */
+.signup-footer-text {
+    margin-top: 2rem;
+    color: #52525b;
+    /* zinc-600 */
+    font-size: 0.75rem;
+    /* text-xs */
+    text-align: center;
+    max-width: 24rem;
+    line-height: 1.5;
+}
