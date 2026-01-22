@@ -4,16 +4,16 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
     {
-        question: "¿CUÁNDO COMIENZA EL CURSO?",
-        answer: "El curso comienza el 19 de enero de 2026. Ese día se liberará todo el contenido y tendrás acceso inmediato a todos los módulos."
+        question: "¿CÓMO FUNCIONA EL ACCESO AL CONTENIDO?",
+        answer: "El curso ya está en marcha. Se libera un nuevo módulo cada 2 semanas para que puedas asimilar e implementar el contenido correctamente. Una vez liberado, el módulo queda disponible para siempre."
     },
     {
         question: "¿ES EN DIRECTO O PUEDO VERLO A MI RITMO?",
         answer: "El curso es 100% asíncrono. Puedes ver el contenido cuando quieras, desde donde quieras, a tu propio ritmo. Las lecciones están grabadas en vídeo de alta calidad y tienes acceso de por vida."
     },
     {
-        question: "¿POR QUÉ DEBERÍA COMPRAR AHORA EN PREVENTA?",
-        answer: "Porque el precio subirá. El 19 de enero sube considerablemente y el día del lanzamiento (19 de enero) aún más. Entrar ahora te garantiza el mejor precio posible."
+        question: "¿POR QUÉ EL CONTENIDO SE LIBERA PROGRESIVAMENTE?",
+        answer: "Porque el networking real requiere práctica. Cada módulo está diseñado para que lo apliques antes de pasar al siguiente. Así aseguramos que obtengas resultados reales, no solo información."
     },
     {
         question: "¿ES REALMENTE DIFERENTE A OTROS CURSOS DE NETWORKING?",
