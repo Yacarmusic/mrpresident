@@ -6,7 +6,7 @@ export const courseContent = [
             {
                 id: "bienvenida",
                 title: "Introducción y Bienvenida",
-                vimeoId: "1156007083"
+                vimeoId: "1161150993"
             }
         ]
     },
