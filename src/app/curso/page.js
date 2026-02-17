@@ -22,7 +22,7 @@ export default function CourseWelcome() {
                 </p>
                 <p style={{ color: '#ccc', marginBottom: '0' }}>
                     Hay un nuevo vídeo disponible en la sección de <strong style={{ color: '#fff' }}>Bienvenida</strong>.
-                    Por favor, míralopara estar al tanto de las novedades del curso.
+                    Por favor, míralo para estar al tanto de las novedades del curso.
                 </p>
             </div>
 
