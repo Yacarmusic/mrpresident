@@ -25,12 +25,15 @@
             --color-gold: #c5a059;
             --color-gold-hover: #e6bd6b;
             --color-black: #050505;
+            --color-dark-gray: #1a1a1a;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--color-black);
             color: #f5f5f5;
+            margin: 0;
+            padding: 0;
             overflow-x: hidden;
         }
 
@@ -42,33 +45,186 @@
             font-family: 'Cinzel', serif;
         }
 
+        /* Helpers */
         .text-gold {
             color: var(--color-gold);
         }
 
-        .bg-gold {
-            background-color: var(--color-gold);
+        .text-white {
+            color: #ffffff;
+        }
+
+        .text-gray-300 {
+            color: #d1d5db;
+        }
+
+        .text-gray-400 {
+            color: #9ca3af;
+        }
+
+        .text-gray-500 {
+            color: #6b7280;
+        }
+
+        .bg-black {
+            background-color: var(--color-black);
+        }
+
+        .bg-dark {
+            background-color: var(--color-dark-gray);
         }
 
         .border-gold {
             border-color: var(--color-gold);
         }
 
+        .border-white-10 {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        /* Section Spacing */
         .section-padding {
-            padding: 5rem 0;
+            padding: 5rem 1rem;
         }
 
-        /* Text Shadow for Hero */
-        .text-shadow-lg {
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
 
-        /* Button Hover Effects */
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--color-black);
+            /* Fallback */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), #050505);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        @media (min-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Grid Logic (mimicking Tailwind) */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .md-grid-cols-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .md-grid-cols-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Flex Logic */
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .gap-2 {
+            gap: 0.5rem;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .md-flex-row {
+                flex-direction: row;
+            }
+        }
+
+        /* Buttons */
         .btn-primary {
             background-color: var(--color-gold);
             color: black;
             font-weight: 700;
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            border: none;
+            cursor: pointer;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         .btn-primary:hover {
@@ -82,13 +238,28 @@
             border: 2px solid var(--color-gold);
             color: var(--color-gold);
             font-weight: 700;
+            padding: 1rem 3rem;
+            font-size: 1.125rem;
+            cursor: pointer;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         .btn-outline:hover {
             background: var(--color-gold);
             color: black;
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--color-dark-gray);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-gold-border {
+            border-color: var(--color-gold);
         }
 
         /* Check list items */
@@ -114,25 +285,23 @@
 <body class="antialiased">
 
     <!-- 1. HERO SECTION -->
-    <section class="relative w-full h-screen flex items-center justify-center overflow-hidden"
-        style="background-image: url('https://mrpresident.es/hero.webp'); background-size: cover; background-position: center;">
+    <section class="hero-section" style="background-image: url('https://mrpresident.es/hero.webp');">
         <!-- Overlay -->
-        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/80 via-black/60 to-[#050505] z-10">
-        </div>
+        <div class="hero-overlay"></div>
 
-        <div class="relative z-20 text-center max-w-4xl px-6">
-            <h2 class="text-gold tracking-[0.2em] uppercase text-sm md:text-lg mb-4 font-bold">
+        <div class="hero-content">
+            <h2 class="text-gold uppercase text-sm md:text-lg mb-4 font-bold" style="letter-spacing: 0.2em;">
                 Propuesta de Asociación Estratégica
             </h2>
-            <h1 class="font-cinzel text-4xl md:text-7xl font-bold text-white mb-6 text-shadow-lg leading-tight">
+            <h1 class="font-cinzel text-white hero-title text-shadow-lg">
                 MR. PRESIDENT<br />
-                <span className="text-gold">ESCUELA DE NEGOCIOS</span>
+                <span class="text-gold">ESCUELA DE NEGOCIOS</span>
             </h1>
-            <p class="text-lg md:text-2xl text-gray-300 font-light tracking-wide mb-10 max-w-2xl mx-auto">
+            <p class="text-gray-300 hero-subtitle">
                 "El éxito no es solo lo que sabes. Es a quién conoces y qué recursos puedes movilizar."
             </p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <button class="btn-primary font-cinzel text-lg px-10 py-4 uppercase tracking-widest">
+            <div class="flex flex-col md-flex-row gap-4 justify-center">
+                <button class="btn-primary font-cinzel">
                     Ver Proyecto
                 </button>
             </div>
@@ -140,158 +309,160 @@
     </section>
 
     <!-- 2. THE PROBLEM (THESIS) -->
-    <section class="py-20 bg-[#050505] section-padding">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="text-center mb-16">
-                <h2 class="font-cinzel text-3xl md:text-4xl text-gold mb-6">
+    <section class="section-padding bg-black">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 4rem;">
+                <h2 class="font-cinzel text-gold font-bold" style="font-size: 2.25rem; margin-bottom: 1.5rem;">
                     LA CRISIS DE LA FORMACIÓN
                 </h2>
-                <p class="text-xl text-gray-400">
+                <p class="text-gray-400" style="font-size: 1.25rem;">
                     El sistema actual está roto. Genera títulos, no resultados.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="bg-[#1a1a1a] p-8 border-l-2 border-zinc-700">
-                    <h3 class="font-cinzel text-2xl text-white mb-4">La Universidad</h3>
-                    <p class="text-gray-400 leading-relaxed">
+            <div class="grid md-grid-cols-2">
+                <div class="card" style="border-left: 2px solid #52525b;">
+                    <h3 class="font-cinzel text-white text-2xl mb-4">La Universidad</h3>
+                    <p class="text-gray-400" style="line-height: 1.6;">
                         Lenta, burocrática y desconectada. Profesores que nunca han pisado el mercado real enseñando
                         teoría obsoleta de hace 10 años.
                     </p>
                 </div>
-                <div class="bg-[#1a1a1a] p-8 border-l-2 border-zinc-700">
-                    <h3 class="font-cinzel text-2xl text-white mb-4">Formación Online</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                <div class="card" style="border-left: 2px solid #52525b;">
+                    <h3 class="font-cinzel text-white text-2xl mb-4">Formación Online</h3>
+                    <p class="text-gray-400" style="line-height: 1.6;">
                         Saturada de "vendehúmos". Promesas vacías sin infraestructura, sin contactos reales y sin una
                         metodología probada de poder.
                     </p>
                 </div>
             </div>
 
-            <div class="mt-16 text-center">
-                <h3 class="text-2xl md:text-3xl text-white font-bold mb-4">
-                    LA SOLUCIÓN: <span className="text-gold">ACELERADORA DE REALIDAD</span>
+            <div class="text-center" style="margin-top: 5rem;">
+                <h3 class="text-white font-bold mb-4" style="font-size: 2rem;">
+                    LA SOLUCIÓN: <span class="text-gold">ACELERADORA DE REALIDAD</span>
                 </h3>
-                <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+                <p class="text-gray-300 text-lg"
+                    style="margin-bottom: 2.5rem; max-width: 42rem; margin-left: auto; margin-right: auto;">
                     No enseñamos teoría de negocios. Enseñamos la práctica del poder, la gestión de crisis y la
                     facturación agresiva.
                 </p>
-                <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-10">
-                    <div class="bg-[#111] p-4 border border-gold/20">
+                <div class="grid md-grid-cols-3 gap-6" style="margin-bottom: 3rem;">
+                    <div class="card border-gold">
                         <h4 class="text-gold font-cinzel font-bold text-xl mb-2">1. CALLE</h4>
                         <p class="text-sm text-gray-400">Realidad pura. Nada de teoría de libro. Lo que funciona hoy.
                         </p>
                     </div>
-                    <div class="bg-[#111] p-4 border border-gold/20">
+                    <div class="card border-gold">
                         <h4 class="text-gold font-cinzel font-bold text-xl mb-2">2. CONTACTOS</h4>
                         <p class="text-sm text-gray-400">Tu red es tu patrimonio. Acceso a quien toma decisiones.</p>
                     </div>
-                    <div class="bg-[#111] p-4 border border-gold/20">
+                    <div class="card border-gold">
                         <h4 class="text-gold font-cinzel font-bold text-xl mb-2">3. CAJA</h4>
                         <p class="text-sm text-gray-400">Sin dinero no hay misión. Facturación y margen desde el día 1.
                         </p>
                     </div>
                 </div>
-                <div class="inline-block border border-[#c5a059] px-6 py-3 bg-[#c5a059]/10 rounded-sm">
-                    <span class="font-cinzel text-gold text-xl tracking-widest">FILOSOFíA MR. PRESIDENT</span>
+                <div
+                    style="display: inline-block; border: 1px solid #c5a059; padding: 0.75rem 1.5rem; background-color: rgba(197, 160, 89, 0.1); border-radius: 0.25rem;">
+                    <span class="font-cinzel text-gold text-xl" style="letter-spacing: 0.15em;">FILOSOFíA MR.
+                        PRESIDENT</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 3. THE METHOD -->
-    <section class="py-20 bg-[#111] border-t border-white/5">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <h2 class="font-cinzel text-3xl md:text-5xl text-center text-white mb-16">
+    <section class="section-padding" style="background-color: #111; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <h2 class="font-cinzel text-center text-white" style="font-size: 2.5rem; margin-bottom: 4rem;">
                 EL <span class="text-gold">MÉTODO</span>
             </h2>
 
-            <div class="space-y-8">
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
                 <!-- Phase 0 -->
-                <div
-                    class="flex flex-col md:flex-row gap-6 items-start bg-[#1a1a1a]/50 p-6 border border-white/5 hover:border-[#c5a059]/50 transition-all duration-300">
-                    <div className="text-gold font-cinzel text-5xl font-bold opacity-30">00</div>
+                <div class="card flex flex-col md-flex-row gap-4 items-start">
+                    <div class="text-gold font-cinzel font-bold opacity-30" style="font-size: 3rem; min-width: 80px;">00
+                    </div>
                     <div class="w-full">
-                        <h3 className="text-2xl font-cinzel text-white mb-2">LA BRÚJULA (Onboarding)</h3>
-                        <p className="text-gray-400 mb-4">Diagnóstico inicial y Hoja de Ruta personalizada.</p>
-                        <ul className="grid md:grid-cols-2 gap-2 text-sm text-gray-500">
-                            <li className="flex items-center gap-2"><i data-lucide="check"
-                                    class="check-icon w-4 h-4"></i> Alineación de expectativas</li>
-                            <li className="flex items-center gap-2"><i data-lucide="check"
-                                    class="check-icon w-4 h-4"></i> Asignación de Manager</li>
+                        <h3 class="text-2xl font-cinzel text-white mb-2">LA BRÚJULA (Onboarding)</h3>
+                        <p class="text-gray-400 mb-4">Diagnóstico inicial y Hoja de Ruta personalizada.</p>
+                        <ul class="grid md-grid-cols-2 gap-2 text-sm text-gray-500">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="check-icon w-4 h-4"></i>
+                                Alineación de expectativas</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="check-icon w-4 h-4"></i>
+                                Asignación de Manager</li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Phase 1 -->
-                <div
-                    class="flex flex-col md:flex-row gap-6 items-start bg-[#1a1a1a]/50 p-6 border border-white/5 hover:border-[#c5a059]/50 transition-all duration-300">
-                    <div className="text-gold font-cinzel text-5xl font-bold opacity-30">01</div>
+                <div class="card flex flex-col md-flex-row gap-4 items-start">
+                    <div class="text-gold font-cinzel font-bold opacity-30" style="font-size: 3rem; min-width: 80px;">01
+                    </div>
                     <div class="w-full">
-                        <h3 className="text-2xl font-cinzel text-white mb-2">LOS CIMIENTOS (Blindaje)</h3>
-                        <p className="text-gray-400 mb-4">Lo que nadie enseña y te arruina: bases legales y financieras.
-                        </p>
-                        <ul className="grid md:grid-cols-2 gap-2 text-sm text-gray-500">
-                            <li className="flex items-center gap-2"><i data-lucide="shield"
-                                    class="check-icon w-4 h-4"></i> Ingeniería Fiscal Agresiva (Legal)</li>
-                            <li className="flex items-center gap-2"><i data-lucide="shield"
-                                    class="check-icon w-4 h-4"></i> Protección Patrimonial</li>
-                            <li className="flex items-center gap-2"><i data-lucide="shield"
-                                    class="check-icon w-4 h-4"></i> Control de Cashflow</li>
+                        <h3 class="text-2xl font-cinzel text-white mb-2">LOS CIMIENTOS (Blindaje)</h3>
+                        <p class="text-gray-400 mb-4">Lo que nadie enseña y te arruina: bases legales y financieras.</p>
+                        <ul class="grid md-grid-cols-2 gap-2 text-sm text-gray-500">
+                            <li class="flex items-center gap-2"><i data-lucide="shield" class="check-icon w-4 h-4"></i>
+                                Ingeniería Fiscal Agresiva (Legal)</li>
+                            <li class="flex items-center gap-2"><i data-lucide="shield" class="check-icon w-4 h-4"></i>
+                                Protección Patrimonial</li>
+                            <li class="flex items-center gap-2"><i data-lucide="shield" class="check-icon w-4 h-4"></i>
+                                Control de Cashflow</li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Phase 2 -->
-                <div
-                    class="flex flex-col md:flex-row gap-6 items-start bg-[#1a1a1a]/50 p-6 border border-white/5 hover:border-[#c5a059]/50 transition-all duration-300">
-                    <div className="text-gold font-cinzel text-5xl font-bold opacity-30">02</div>
+                <div class="card flex flex-col md-flex-row gap-4 items-start">
+                    <div class="text-gold font-cinzel font-bold opacity-30" style="font-size: 3rem; min-width: 80px;">02
+                    </div>
                     <div class="w-full">
-                        <h3 className="text-2xl font-cinzel text-white mb-2">EL MOTOR (Ventas y Marketing)</h3>
-                        <p className="text-gray-400 mb-4">Narrativa, autoridad y sistemas de cierre High Ticket.</p>
-                        <ul className="grid md:grid-cols-2 gap-2 text-sm text-gray-500">
-                            <li className="flex items-center gap-2"><i data-lucide="trending-up"
+                        <h3 class="text-2xl font-cinzel text-white mb-2">EL MOTOR (Ventas y Marketing)</h3>
+                        <p class="text-gray-400 mb-4">Narrativa, autoridad y sistemas de cierre High Ticket.</p>
+                        <ul class="grid md-grid-cols-2 gap-2 text-sm text-gray-500">
+                            <li class="flex items-center gap-2"><i data-lucide="trending-up"
                                     class="check-icon w-4 h-4"></i> Branding Personal (Factor F.N.)</li>
-                            <li className="flex items-center gap-2"><i data-lucide="trending-up"
+                            <li class="flex items-center gap-2"><i data-lucide="trending-up"
                                     class="check-icon w-4 h-4"></i> Prospección en Frío (Outbound)</li>
-                            <li className="flex items-center gap-2"><i data-lucide="trending-up"
+                            <li class="flex items-center gap-2"><i data-lucide="trending-up"
                                     class="check-icon w-4 h-4"></i> Psicología de Ventas</li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Phase 3 -->
-                <div
-                    class="flex flex-col md:flex-row gap-6 items-start bg-[#1a1a1a]/50 p-6 border border-white/5 hover:border-[#c5a059]/50 transition-all duration-300">
-                    <div className="text-gold font-cinzel text-5xl font-bold opacity-30">03</div>
+                <div class="card flex flex-col md-flex-row gap-4 items-start">
+                    <div class="text-gold font-cinzel font-bold opacity-30" style="font-size: 3rem; min-width: 80px;">03
+                    </div>
                     <div class="w-full">
-                        <h3 className="text-2xl font-cinzel text-white mb-2">LA EXPANSIÓN (Red y Escala)</h3>
-                        <p className="text-gray-400 mb-4">Acceso a círculos de poder y automatización.</p>
-                        <ul className="grid md:grid-cols-2 gap-2 text-sm text-gray-500">
-                            <li className="flex items-center gap-2"><i data-lucide="users"
-                                    class="check-icon w-4 h-4"></i> Networking Avanzado</li>
-                            <li className="flex items-center gap-2"><i data-lucide="users"
-                                    class="check-icon w-4 h-4"></i> Operaciones e IA</li>
+                        <h3 class="text-2xl font-cinzel text-white mb-2">LA EXPANSIÓN (Red y Escala)</h3>
+                        <p class="text-gray-400 mb-4">Acceso a círculos de poder y automatización.</p>
+                        <ul class="grid md-grid-cols-2 gap-2 text-sm text-gray-500">
+                            <li class="flex items-center gap-2"><i data-lucide="users" class="check-icon w-4 h-4"></i>
+                                Networking Avanzado</li>
+                            <li class="flex items-center gap-2"><i data-lucide="users" class="check-icon w-4 h-4"></i>
+                                Operaciones e IA</li>
                             <li class="flex items-center gap-2"><i data-lucide="users" class="check-icon w-4 h-4"></i>
                                 Liderazgo de Equipos</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Phase 4 (New) -->
-                <div
-                    class="flex flex-col md:flex-row gap-6 items-start bg-[#1a1a1a]/50 p-6 border border-white/5 hover:border-[#c5a059]/50 transition-all duration-300">
-                    <div class="text-gold font-cinzel text-5xl font-bold opacity-30">04</div>
+                <!-- Phase 4 -->
+                <div class="card flex flex-col md-flex-row gap-4 items-start">
+                    <div class="text-gold font-cinzel font-bold opacity-30" style="font-size: 3rem; min-width: 80px;">04
+                    </div>
                     <div class="w-full">
-                        <h3 className="text-2xl font-cinzel text-white mb-2">EL EMPRENDEDOR (Mindset)</h3>
-                        <p className="text-gray-400 mb-4">No hay negocio sin líder. Mentalidad de acero.</p>
-                        <ul className="grid md:grid-cols-2 gap-2 text-sm text-gray-500">
-                            <li className="flex items-center gap-2"><i data-lucide="brain"
-                                    class="check-icon w-4 h-4"></i> Desarrollo Personal & Biohacking</li>
-                            <li className="flex items-center gap-2"><i data-lucide="brain"
-                                    class="check-icon w-4 h-4"></i> Salud y Rendimiento</li>
-                            <li className="flex items-center gap-2"><i data-lucide="brain"
-                                    class="check-icon w-4 h-4"></i> Resiliencia y Gestión del Caos</li>
+                        <h3 class="text-2xl font-cinzel text-white mb-2">EL EMPRENDEDOR (Mindset)</h3>
+                        <p class="text-gray-400 mb-4">No hay negocio sin líder. Mentalidad de acero.</p>
+                        <ul class="grid md-grid-cols-2 gap-2 text-sm text-gray-500">
+                            <li class="flex items-center gap-2"><i data-lucide="brain" class="check-icon w-4 h-4"></i>
+                                Desarrollo Personal & Biohacking</li>
+                            <li class="flex items-center gap-2"><i data-lucide="brain" class="check-icon w-4 h-4"></i>
+                                Salud y Rendimiento</li>
+                            <li class="flex items-center gap-2"><i data-lucide="brain" class="check-icon w-4 h-4"></i>
+                                Resiliencia y Gestión del Caos</li>
                         </ul>
                     </div>
                 </div>
@@ -300,25 +471,29 @@
     </section>
 
     <!-- 4. ECOSYSTEM & TECH -->
-    <section class="py-20 bg-[#050505]">
-        <div class="container mx-auto px-6 text-center max-w-4xl">
-            <h2 class="font-cinzel text-3xl md:text-4xl text-white mb-12">ECOSYSTEM <span
-                    class="text-gold">AD-HOC</span></h2>
+    <section class="section-padding bg-black">
+        <div class="container text-center">
+            <h2 class="font-cinzel text-white" style="font-size: 2.25rem; margin-bottom: 3rem;">
+                ECOSYSTEM <span class="text-gold">AD-HOC</span>
+            </h2>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-6 border border-white/10 bg-[#111]">
-                    <div class="flex justify-center mb-4"><i data-lucide="zap" class="text-gold w-8 h-8"></i></div>
-                    <h4 class="font-bold text-lg mb-2">Plataforma Propia</h4>
+            <div class="grid md-grid-cols-3">
+                <div class="card">
+                    <div class="flex justify-center mb-4"><i data-lucide="zap" class="text-gold"
+                            style="width: 2rem; height: 2rem;"></i></div>
+                    <h4 class="font-bold text-white text-lg mb-2">Plataforma Propia</h4>
                     <p class="text-sm text-gray-400">Sin terceros. Netflix-style. Privacidad total de datos.</p>
                 </div>
-                <div class="p-6 border border-white/10 bg-[#111]">
-                    <div class="flex justify-center mb-4"><i data-lucide="users" class="text-gold w-8 h-8"></i></div>
-                    <h4 class="font-bold text-lg mb-2">Híbrido</h4>
+                <div class="card">
+                    <div class="flex justify-center mb-4"><i data-lucide="users" class="text-gold"
+                            style="width: 2rem; height: 2rem;"></i></div>
+                    <h4 class="font-bold text-white text-lg mb-2">Híbrido</h4>
                     <p class="text-sm text-gray-400">Contenido grabado Top Tier + Mentoría 1 a 1 quincenal.</p>
                 </div>
-                <div class="p-6 border border-white/10 bg-[#111]">
-                    <div class="flex justify-center mb-4"><i data-lucide="star" class="text-gold w-8 h-8"></i></div>
-                    <h4 class="font-bold text-lg mb-2">Gamificación</h4>
+                <div class="card">
+                    <div class="flex justify-center mb-4"><i data-lucide="star" class="text-gold"
+                            style="width: 2rem; height: 2rem;"></i></div>
+                    <h4 class="font-bold text-white text-lg mb-2">Gamificación</h4>
                     <p class="text-sm text-gray-400">Premio a facturación: Podcast presencial con Mr. President.</p>
                 </div>
             </div>
@@ -326,66 +501,72 @@
     </section>
 
     <!-- 5. PRICING (BUSINESS MODEL) -->
-    <section class="py-20 bg-[#111] border-t border-white/5">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <h2 class="font-cinzel text-3xl md:text-5xl text-center text-white mb-6">MODELO DE <span
-                    class="text-gold">NEGOCIO</span></h2>
-            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Dos niveles de acceso para filtrar el
-                compromiso y el poder adquisitivo.</p>
+    <section class="section-padding" style="background-color: #111; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <h2 class="font-cinzel text-center text-white" style="font-size: 2.5rem; margin-bottom: 1.5rem;">
+                MODELO DE <span class="text-gold">NEGOCIO</span>
+            </h2>
+            <p class="text-center text-gray-400"
+                style="margin-bottom: 4rem; max-width: 42rem; margin-left: auto; margin-right: auto; font-size: 1.125rem;">
+                Dos niveles de acceso para filtrar el compromiso y el poder adquisitivo.
+            </p>
 
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid md-grid-cols-2">
                 <!-- EXECUTIVE -->
-                <div class="bg-[#1a1a1a] p-8 border border-white/10 flex flex-col">
+                <div class="card flex flex-col">
                     <h3 class="font-cinzel text-2xl text-white mb-2">EXECUTIVE</h3>
                     <p class="text-gray-500 mb-6 text-sm">Para quienes buscan estructura y escalar.</p>
                     <div class="text-4xl font-cinzel text-gold mb-6">3.000€ <span
                             class="text-sm text-gray-500 font-sans">/año</span></div>
 
-                    <ul class="space-y-4 mb-8 flex-1">
-                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                    <ul class="flex flex-col gap-4 mb-8" style="flex: 1;">
+                        <li class="flex gap-4 text-gray-300 text-sm"><i data-lucide="check"
                                 class="check-icon w-4 h-4"></i> Acceso completo contenido</li>
-                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                        <li class="flex gap-4 text-gray-300 text-sm"><i data-lucide="check"
                                 class="check-icon w-4 h-4"></i> Tutor de seguimiento</li>
-                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                        <li class="flex gap-4 text-gray-300 text-sm"><i data-lucide="check"
                                 class="check-icon w-4 h-4"></i> Clases grupales semanales</li>
-                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                        <li class="flex gap-4 text-gray-300 text-sm"><i data-lucide="check"
                                 class="check-icon w-4 h-4"></i> <strong>Mentoría 1 a 1 quincenal</strong></li>
                     </ul>
                 </div>
 
                 <!-- PRESIDENT'S CLUB -->
-                <div
-                    class="bg-[#1a1a1a] p-8 border border-[#c5a059] relative overflow-hidden flex flex-col shadow-[0_0_30px_rgba(197,160,89,0.1)]">
-                    <div class="absolute top-0 right-0 bg-[#c5a059] text-black text-xs font-bold px-3 py-1 font-cinzel">
-                        HIGH TICKET</div>
+                <div class="card border-gold flex flex-col"
+                    style="position: relative; overflow: hidden; box-shadow: 0 0 30px rgba(197,160,89,0.1);">
+                    <div
+                        style="position: absolute; top: 0; right: 0; background-color: var(--color-gold); color: black; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem; font-family: 'Cinzel', serif;">
+                        HIGH TICKET
+                    </div>
                     <h3 class="font-cinzel text-2xl text-white mb-2">PRESIDENT'S CLUB</h3>
                     <p class="text-gray-500 mb-6 text-sm">Acceso, proximidad y red de contactos.</p>
                     <div class="text-4xl font-cinzel text-gold mb-6">15.000€ <span
                             class="text-sm text-gray-500 font-sans">/año</span></div>
 
-                    <ul class="space-y-4 mb-8 flex-1">
-                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                    <ul class="flex flex-col gap-4 mb-8" style="flex: 1;">
+                        <li class="flex gap-4 text-gray-300 text-sm"><i data-lucide="check"
                                 class="check-icon w-4 h-4"></i> <strong>TODO lo incluido en Executive</strong></li>
-                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                        <li class="flex gap-4 text-gray-300 text-sm"><i data-lucide="check"
                                 class="check-icon w-4 h-4"></i> <strong>4 MASTERMINDS PRESENCIALES</strong></li>
-                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                        <li class="flex gap-4 text-gray-300 text-sm"><i data-lucide="check"
                                 class="check-icon w-4 h-4"></i> Cenas y fiestas exclusivas</li>
-                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                        <li class="flex gap-4 text-gray-300 text-sm"><i data-lucide="check"
                                 class="check-icon w-4 h-4"></i> Acceso directo a F.N. y VIPs</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="mt-16 text-center">
-                <button class="btn-outline font-cinzel text-lg px-12 py-5 uppercase tracking-widest mb-12">
+            <div class="text-center" style="margin-top: 4rem;">
+                <button class="btn-outline font-cinzel" style="margin-bottom: 3rem;">
                     Solicitar Dossier Completo
                 </button>
             </div>
 
             <!-- ROADMAP -->
-            <div class="border-t border-white/10 pt-16 mt-16 text-center max-w-3xl mx-auto">
+            <div class="text-center"
+                style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4rem; margin-top: 4rem; max-width: 48rem; margin-left: auto; margin-right: auto;">
                 <h3 class="font-cinzel text-2xl text-white mb-8">HOJA DE RUTA (ROADMAP)</h3>
-                <div class="space-y-6 text-left">
+                <div class="flex flex-col gap-6 text-left">
                     <div class="flex gap-4">
                         <span class="text-gold font-bold font-cinzel text-xl">01</span>
                         <div>
@@ -421,7 +602,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 bg-[#050505] text-center text-gray-600 text-sm border-t border-white/10">
+    <footer class="bg-black text-center text-gray-500"
+        style="padding: 2rem 0; font-size: 0.875rem; border-top: 1px solid rgba(255,255,255,0.1);">
         <p>&copy; 2026 Instituto Internacional de Conexiones Estratégicas. Confidencial.</p>
     </footer>
 
