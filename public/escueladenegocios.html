@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Mr. President Escuela de Negocios | El Poder Real</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN for standalone usage) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons (Script to render icons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --color-gold: #c5a059;
+            --color-gold-hover: #e6bd6b;
+            --color-black: #050505;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-black);
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+
+        .text-gold {
+            color: var(--color-gold);
+        }
+
+        .bg-gold {
+            background-color: var(--color-gold);
+        }
+
+        .border-gold {
+            border-color: var(--color-gold);
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        /* Text Shadow for Hero */
+        .text-shadow-lg {
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Button Hover Effects */
+        .btn-primary {
+            background-color: var(--color-gold);
+            color: black;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--color-gold);
+            color: var(--color-gold);
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--color-gold);
+            color: black;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* Check list items */
+        .check-icon {
+            color: var(--color-gold);
+            flex-shrink: 0;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#c5a059',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="antialiased">
+
+    <!-- 1. HERO SECTION -->
+    <section class="relative w-full h-screen flex items-center justify-center overflow-hidden"
+        style="background-image: url('https://mrpresident.es/hero.webp'); background-size: cover; background-position: center;">
+        <!-- Overlay -->
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/80 via-black/60 to-[#050505] z-10">
+        </div>
+
+        <div class="relative z-20 text-center max-w-4xl px-6">
+            <h2 class="text-gold tracking-[0.2em] uppercase text-sm md:text-lg mb-4 font-bold">
+                Propuesta de Asociación Estratégica
+            </h2>
+            <h1 class="font-cinzel text-4xl md:text-7xl font-bold text-white mb-6 text-shadow-lg leading-tight">
+                MR. PRESIDENT<br />
+                <span className="text-gold">ESCUELA DE NEGOCIOS</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-300 font-light tracking-wide mb-10 max-w-2xl mx-auto">
+                "El éxito no es solo lo que sabes. Es a quién conoces y qué recursos puedes movilizar."
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button class="btn-primary font-cinzel text-lg px-10 py-4 uppercase tracking-widest">
+                    Ver Proyecto
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. THE PROBLEM (THESIS) -->
+    <section class="py-20 bg-[#050505] section-padding">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="font-cinzel text-3xl md:text-4xl text-gold mb-6">
+                    LA CRISIS DE LA FORMACIÓN
+                </h2>
+                <p class="text-xl text-gray-400">
+                    El sistema actual está roto. Genera títulos, no resultados.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-[#1a1a1a] p-8 border-l-2 border-zinc-700">
+                    <h3 class="font-cinzel text-2xl text-white mb-4">La Universidad</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Lenta, burocrática y desconectada. Profesores que nunca han pisado el mercado real enseñando
+                        teoría obsoleta de hace 10 años.
+                    </p>
+                </div>
+                <div class="bg-[#1a1a1a] p-8 border-l-2 border-zinc-700">
+                    <h3 class="font-cinzel text-2xl text-white mb-4">Formación Online</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Saturada de "vendehúmos". Promesas vacías sin infraestructura, sin contactos reales y sin una
+                        metodología probada de poder.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl md:text-3xl text-white font-bold mb-4">
+                    LA SOLUCIÓN: <span className="text-gold">ACELERADORA DE REALIDAD</span>
+                </h3>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+                    No enseñamos teoría de negocios. Enseñamos la práctica del poder, la gestión de crisis y la
+                    facturación agresiva.
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-10">
+                    <div class="bg-[#111] p-4 border border-gold/20">
+                        <h4 class="text-gold font-cinzel font-bold text-xl mb-2">1. CALLE</h4>
+                        <p class="text-sm text-gray-400">Realidad pura. Nada de teoría de libro. Lo que funciona hoy.
+                        </p>
+                    </div>
+                    <div class="bg-[#111] p-4 border border-gold/20">
+                        <h4 class="text-gold font-cinzel font-bold text-xl mb-2">2. CONTACTOS</h4>
+                        <p class="text-sm text-gray-400">Tu red es tu patrimonio. Acceso a quien toma decisiones.</p>
+                    </div>
+                    <div class="bg-[#111] p-4 border border-gold/20">
+                        <h4 class="text-gold font-cinzel font-bold text-xl mb-2">3. CAJA</h4>
+                        <p class="text-sm text-gray-400">Sin dinero no hay misión. Facturación y margen desde el día 1.
+                        </p>
+                    </div>
+                </div>
+                <div class="inline-block border border-[#c5a059] px-6 py-3 bg-[#c5a059]/10 rounded-sm">
+                    <span class="font-cinzel text-gold text-xl tracking-widest">FILOSOFíA MR. PRESIDENT</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. THE METHOD -->
+    <section class="py-20 bg-[#111] border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="font-cinzel text-3xl md:text-5xl text-center text-white mb-16">
+                EL <span class="text-gold">MÉTODO</span>
+            </h2>
+
+            <div class="space-y-8">
+                <!-- Phase 0 -->
+                <div
+                    class="flex flex-col md:flex-row gap-6 items-start bg-[#1a1a1a]/50 p-6 border border-white/5 hover:border-[#c5a059]/50 transition-all duration-300">
+                    <div className="text-gold font-cinzel text-5xl font-bold opacity-30">00</div>
+                    <div class="w-full">
+                        <h3 className="text-2xl font-cinzel text-white mb-2">LA BRÚJULA (Onboarding)</h3>
+                        <p className="text-gray-400 mb-4">Diagnóstico inicial y Hoja de Ruta personalizada.</p>
+                        <ul className="grid md:grid-cols-2 gap-2 text-sm text-gray-500">
+                            <li className="flex items-center gap-2"><i data-lucide="check"
+                                    class="check-icon w-4 h-4"></i> Alineación de expectativas</li>
+                            <li className="flex items-center gap-2"><i data-lucide="check"
+                                    class="check-icon w-4 h-4"></i> Asignación de Manager</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 1 -->
+                <div
+                    class="flex flex-col md:flex-row gap-6 items-start bg-[#1a1a1a]/50 p-6 border border-white/5 hover:border-[#c5a059]/50 transition-all duration-300">
+                    <div className="text-gold font-cinzel text-5xl font-bold opacity-30">01</div>
+                    <div class="w-full">
+                        <h3 className="text-2xl font-cinzel text-white mb-2">LOS CIMIENTOS (Blindaje)</h3>
+                        <p className="text-gray-400 mb-4">Lo que nadie enseña y te arruina: bases legales y financieras.
+                        </p>
+                        <ul className="grid md:grid-cols-2 gap-2 text-sm text-gray-500">
+                            <li className="flex items-center gap-2"><i data-lucide="shield"
+                                    class="check-icon w-4 h-4"></i> Ingeniería Fiscal Agresiva (Legal)</li>
+                            <li className="flex items-center gap-2"><i data-lucide="shield"
+                                    class="check-icon w-4 h-4"></i> Protección Patrimonial</li>
+                            <li className="flex items-center gap-2"><i data-lucide="shield"
+                                    class="check-icon w-4 h-4"></i> Control de Cashflow</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div
+                    class="flex flex-col md:flex-row gap-6 items-start bg-[#1a1a1a]/50 p-6 border border-white/5 hover:border-[#c5a059]/50 transition-all duration-300">
+                    <div className="text-gold font-cinzel text-5xl font-bold opacity-30">02</div>
+                    <div class="w-full">
+                        <h3 className="text-2xl font-cinzel text-white mb-2">EL MOTOR (Ventas y Marketing)</h3>
+                        <p className="text-gray-400 mb-4">Narrativa, autoridad y sistemas de cierre High Ticket.</p>
+                        <ul className="grid md:grid-cols-2 gap-2 text-sm text-gray-500">
+                            <li className="flex items-center gap-2"><i data-lucide="trending-up"
+                                    class="check-icon w-4 h-4"></i> Branding Personal (Factor F.N.)</li>
+                            <li className="flex items-center gap-2"><i data-lucide="trending-up"
+                                    class="check-icon w-4 h-4"></i> Prospección en Frío (Outbound)</li>
+                            <li className="flex items-center gap-2"><i data-lucide="trending-up"
+                                    class="check-icon w-4 h-4"></i> Psicología de Ventas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div
+                    class="flex flex-col md:flex-row gap-6 items-start bg-[#1a1a1a]/50 p-6 border border-white/5 hover:border-[#c5a059]/50 transition-all duration-300">
+                    <div className="text-gold font-cinzel text-5xl font-bold opacity-30">03</div>
+                    <div class="w-full">
+                        <h3 className="text-2xl font-cinzel text-white mb-2">LA EXPANSIÓN (Red y Escala)</h3>
+                        <p className="text-gray-400 mb-4">Acceso a círculos de poder y automatización.</p>
+                        <ul className="grid md:grid-cols-2 gap-2 text-sm text-gray-500">
+                            <li className="flex items-center gap-2"><i data-lucide="users"
+                                    class="check-icon w-4 h-4"></i> Networking Avanzado</li>
+                            <li className="flex items-center gap-2"><i data-lucide="users"
+                                    class="check-icon w-4 h-4"></i> Operaciones e IA</li>
+                            <li class="flex items-center gap-2"><i data-lucide="users" class="check-icon w-4 h-4"></i>
+                                Liderazgo de Equipos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 4 (New) -->
+                <div
+                    class="flex flex-col md:flex-row gap-6 items-start bg-[#1a1a1a]/50 p-6 border border-white/5 hover:border-[#c5a059]/50 transition-all duration-300">
+                    <div class="text-gold font-cinzel text-5xl font-bold opacity-30">04</div>
+                    <div class="w-full">
+                        <h3 className="text-2xl font-cinzel text-white mb-2">EL EMPRENDEDOR (Mindset)</h3>
+                        <p className="text-gray-400 mb-4">No hay negocio sin líder. Mentalidad de acero.</p>
+                        <ul className="grid md:grid-cols-2 gap-2 text-sm text-gray-500">
+                            <li className="flex items-center gap-2"><i data-lucide="brain"
+                                    class="check-icon w-4 h-4"></i> Desarrollo Personal & Biohacking</li>
+                            <li className="flex items-center gap-2"><i data-lucide="brain"
+                                    class="check-icon w-4 h-4"></i> Salud y Rendimiento</li>
+                            <li className="flex items-center gap-2"><i data-lucide="brain"
+                                    class="check-icon w-4 h-4"></i> Resiliencia y Gestión del Caos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ECOSYSTEM & TECH -->
+    <section class="py-20 bg-[#050505]">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+            <h2 class="font-cinzel text-3xl md:text-4xl text-white mb-12">ECOSYSTEM <span
+                    class="text-gold">AD-HOC</span></h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 border border-white/10 bg-[#111]">
+                    <div class="flex justify-center mb-4"><i data-lucide="zap" class="text-gold w-8 h-8"></i></div>
+                    <h4 class="font-bold text-lg mb-2">Plataforma Propia</h4>
+                    <p class="text-sm text-gray-400">Sin terceros. Netflix-style. Privacidad total de datos.</p>
+                </div>
+                <div class="p-6 border border-white/10 bg-[#111]">
+                    <div class="flex justify-center mb-4"><i data-lucide="users" class="text-gold w-8 h-8"></i></div>
+                    <h4 class="font-bold text-lg mb-2">Híbrido</h4>
+                    <p class="text-sm text-gray-400">Contenido grabado Top Tier + Mentoría 1 a 1 quincenal.</p>
+                </div>
+                <div class="p-6 border border-white/10 bg-[#111]">
+                    <div class="flex justify-center mb-4"><i data-lucide="star" class="text-gold w-8 h-8"></i></div>
+                    <h4 class="font-bold text-lg mb-2">Gamificación</h4>
+                    <p class="text-sm text-gray-400">Premio a facturación: Podcast presencial con Mr. President.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PRICING (BUSINESS MODEL) -->
+    <section class="py-20 bg-[#111] border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="font-cinzel text-3xl md:text-5xl text-center text-white mb-6">MODELO DE <span
+                    class="text-gold">NEGOCIO</span></h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Dos niveles de acceso para filtrar el
+                compromiso y el poder adquisitivo.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- EXECUTIVE -->
+                <div class="bg-[#1a1a1a] p-8 border border-white/10 flex flex-col">
+                    <h3 class="font-cinzel text-2xl text-white mb-2">EXECUTIVE</h3>
+                    <p class="text-gray-500 mb-6 text-sm">Para quienes buscan estructura y escalar.</p>
+                    <div class="text-4xl font-cinzel text-gold mb-6">3.000€ <span
+                            class="text-sm text-gray-500 font-sans">/año</span></div>
+
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                                class="check-icon w-4 h-4"></i> Acceso completo contenido</li>
+                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                                class="check-icon w-4 h-4"></i> Tutor de seguimiento</li>
+                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                                class="check-icon w-4 h-4"></i> Clases grupales semanales</li>
+                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                                class="check-icon w-4 h-4"></i> <strong>Mentoría 1 a 1 quincenal</strong></li>
+                    </ul>
+                </div>
+
+                <!-- PRESIDENT'S CLUB -->
+                <div
+                    class="bg-[#1a1a1a] p-8 border border-[#c5a059] relative overflow-hidden flex flex-col shadow-[0_0_30px_rgba(197,160,89,0.1)]">
+                    <div class="absolute top-0 right-0 bg-[#c5a059] text-black text-xs font-bold px-3 py-1 font-cinzel">
+                        HIGH TICKET</div>
+                    <h3 class="font-cinzel text-2xl text-white mb-2">PRESIDENT'S CLUB</h3>
+                    <p class="text-gray-500 mb-6 text-sm">Acceso, proximidad y red de contactos.</p>
+                    <div class="text-4xl font-cinzel text-gold mb-6">15.000€ <span
+                            class="text-sm text-gray-500 font-sans">/año</span></div>
+
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                                class="check-icon w-4 h-4"></i> <strong>TODO lo incluido en Executive</strong></li>
+                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                                class="check-icon w-4 h-4"></i> <strong>4 MASTERMINDS PRESENCIALES</strong></li>
+                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                                class="check-icon w-4 h-4"></i> Cenas y fiestas exclusivas</li>
+                        <li class="flex gap-3 text-gray-300 text-sm"><i data-lucide="check"
+                                class="check-icon w-4 h-4"></i> Acceso directo a F.N. y VIPs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <button class="btn-outline font-cinzel text-lg px-12 py-5 uppercase tracking-widest mb-12">
+                    Solicitar Dossier Completo
+                </button>
+            </div>
+
+            <!-- ROADMAP -->
+            <div class="border-t border-white/10 pt-16 mt-16 text-center max-w-3xl mx-auto">
+                <h3 class="font-cinzel text-2xl text-white mb-8">HOJA DE RUTA (ROADMAP)</h3>
+                <div class="space-y-6 text-left">
+                    <div class="flex gap-4">
+                        <span class="text-gold font-bold font-cinzel text-xl">01</span>
+                        <div>
+                            <h4 class="text-white font-bold">Captación de Talentos</h4>
+                            <p class="text-gray-500 text-sm">Cierre de expertos en Fiscalidad, IA y Ventas.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="text-gold font-bold font-cinzel text-xl">02</span>
+                        <div>
+                            <h4 class="text-white font-bold">Desarrollo Tecnológico</h4>
+                            <p class="text-gray-500 text-sm">Puesta a punto del MVP de la plataforma propia.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="text-gold font-bold font-cinzel text-xl">03</span>
+                        <div>
+                            <h4 class="text-white font-bold">Lanzamiento Beta (Founding Members)</h4>
+                            <p class="text-gray-500 text-sm">Entrada de primeros alumnos para validar modelo 1:1.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="text-gold font-bold font-cinzel text-xl">04</span>
+                        <div>
+                            <h4 class="text-white font-bold">Primer Evento Mastermind</h4>
+                            <p class="text-gray-500 text-sm">Hito clave para tangibilizar el valor del ticket High
+                                Ticket.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-[#050505] text-center text-gray-600 text-sm border-t border-white/10">
+        <p>&copy; 2026 Instituto Internacional de Conexiones Estratégicas. Confidencial.</p>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
