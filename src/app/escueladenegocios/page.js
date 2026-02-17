@@ -107,9 +107,9 @@ export default function BusinessSchoolPage() {
                                 <h3 className="text-2xl business-font-cinzel text-white mb-2">LOS CIMIENTOS (Blindaje)</h3>
                                 <p className="text-gray-400 mb-4">Lo que nadie enseña y te arruina: bases legales y financieras.</p>
                                 <ul className="business-grid-2 gap-2 text-sm text-gray-500">
-                                    <li className="flex items-center gap-2"><Shield size={14} className="business-text-gold" /> Ingeniería Fiscal Agresiva (Legal)</li>
-                                    <li className="flex items-center gap-2"><Shield size={14} className="business-text-gold" /> Protección Patrimonial</li>
-                                    <li className="flex items-center gap-2"><Shield size={14} className="business-text-gold" /> Control de Cashflow</li>
+                                    <li className="flex items-center gap-2"><Shield size={14} className="business-text-gold" /> Modelos de Negocio (B2B/B2C, Recurrencia)</li>
+                                    <li className="flex items-center gap-2"><Shield size={14} className="business-text-gold" /> Ingeniería Legal y Fiscal (SL vs Autónomo)</li>
+                                    <li className="flex items-center gap-2"><Shield size={14} className="business-text-gold" /> Finanzas Reales (Cashflow y Margen)</li>
                                 </ul>
                             </div>
                         </div>
@@ -121,9 +121,9 @@ export default function BusinessSchoolPage() {
                                 <h3 className="text-2xl business-font-cinzel text-white mb-2">EL MOTOR (Ventas y Marketing)</h3>
                                 <p className="text-gray-400 mb-4">Narrativa, autoridad y sistemas de cierre High Ticket.</p>
                                 <ul className="business-grid-2 gap-2 text-sm text-gray-500">
-                                    <li className="flex items-center gap-2"><TrendingUp size={14} className="business-text-gold" /> Branding Personal (Factor F.N.)</li>
-                                    <li className="flex items-center gap-2"><TrendingUp size={14} className="business-text-gold" /> Prospección en Frío (Outbound)</li>
-                                    <li className="flex items-center gap-2"><TrendingUp size={14} className="business-text-gold" /> Psicología de Ventas</li>
+                                    <li className="flex items-center gap-2"><TrendingUp size={14} className="business-text-gold" /> Branding y Marca Personal</li>
+                                    <li className="flex items-center gap-2"><TrendingUp size={14} className="business-text-gold" /> Sistemas de Captación (Inbound/Outbound)</li>
+                                    <li className="flex items-center gap-2"><TrendingUp size={14} className="business-text-gold" /> Cierres High Ticket y Negociación</li>
                                 </ul>
                             </div>
                         </div>
@@ -135,9 +135,23 @@ export default function BusinessSchoolPage() {
                                 <h3 className="text-2xl business-font-cinzel text-white mb-2">LA EXPANSIÓN (Red y Escala)</h3>
                                 <p className="text-gray-400 mb-4">Acceso a círculos de poder y automatización.</p>
                                 <ul className="business-grid-2 gap-2 text-sm text-gray-500">
-                                    <li className="flex items-center gap-2"><Users size={14} className="business-text-gold" /> Networking Avanzado</li>
-                                    <li className="flex items-center gap-2"><Users size={14} className="business-text-gold" /> Operaciones e IA</li>
-                                    <li className="flex items-center gap-2"><Users size={14} className="business-text-gold" /> Liderazgo de Equipos</li>
+                                    <li className="flex items-center gap-2"><Users size={14} className="business-text-gold" /> Networking Avanzado y RR.PP.</li>
+                                    <li className="flex items-center gap-2"><Users size={14} className="business-text-gold" /> Operaciones e Inteligencia Artificial</li>
+                                    <li className="flex items-center gap-2"><Users size={14} className="business-text-gold" /> Gestión de Equipos y Liderazgo</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Phase 4 */}
+                        <div className="phase-card">
+                            <div className="phase-number">04</div>
+                            <div className="w-full">
+                                <h3 className="text-2xl business-font-cinzel text-white mb-2">EL EMPRENDEDOR (Mindset)</h3>
+                                <p className="text-gray-400 mb-4">No hay negocio sin líder. Mentalidad de acero.</p>
+                                <ul className="business-grid-2 gap-2 text-sm text-gray-500">
+                                    <li className="flex items-center gap-2"><Zap size={14} className="business-text-gold" /> Desarrollo Personal y Biohacking</li>
+                                    <li className="flex items-center gap-2"><Zap size={14} className="business-text-gold" /> Salud y Alto Rendimiento</li>
+                                    <li className="flex items-center gap-2"><Zap size={14} className="business-text-gold" /> Resiliencia y Gestión del Caos</li>
                                 </ul>
                             </div>
                         </div>
@@ -213,36 +227,36 @@ export default function BusinessSchoolPage() {
                         </button>
                     </div>
 
-                    {/* ROADMAP from HTML file */}
-                    <div className="text-center mx-auto max-w-4xl mt-16 pt-16 border-t border-white/10">
+                    {/* ROADMAP from HTML file - STYLED FIX */}
+                    <div className="roadmap-container">
                         <h3 className="business-font-cinzel text-2xl text-white mb-8">HOJA DE RUTA (ROADMAP)</h3>
                         <div className="flex flex-col gap-6 text-left">
-                            <div className="flex gap-4">
-                                <span className="business-text-gold font-bold business-font-cinzel text-xl">01</span>
+                            <div className="roadmap-item">
+                                <span className="roadmap-number">01</span>
                                 <div>
-                                    <h4 className="text-white font-bold business-font-cinzel">Captación de Talentos</h4>
-                                    <p className="text-gray-500 text-sm">Cierre de expertos en Fiscalidad, IA y Ventas.</p>
+                                    <h4 className="roadmap-title">Captación de Talentos</h4>
+                                    <p className="roadmap-desc">Cierre de expertos en Fiscalidad, IA y Ventas.</p>
                                 </div>
                             </div>
-                            <div className="flex gap-4">
-                                <span className="business-text-gold font-bold business-font-cinzel text-xl">02</span>
+                            <div className="roadmap-item">
+                                <span className="roadmap-number">02</span>
                                 <div>
-                                    <h4 className="text-white font-bold business-font-cinzel">Desarrollo Tecnológico</h4>
-                                    <p className="text-gray-500 text-sm">Puesta a punto del MVP de la plataforma propia.</p>
+                                    <h4 className="roadmap-title">Desarrollo Tecnológico</h4>
+                                    <p className="roadmap-desc">Puesta a punto del MVP de la plataforma propia.</p>
                                 </div>
                             </div>
-                            <div className="flex gap-4">
-                                <span className="business-text-gold font-bold business-font-cinzel text-xl">03</span>
+                            <div className="roadmap-item">
+                                <span className="roadmap-number">03</span>
                                 <div>
-                                    <h4 className="text-white font-bold business-font-cinzel">Lanzamiento Beta (Founding Members)</h4>
-                                    <p className="text-gray-500 text-sm">Entrada de primeros alumnos para validar modelo 1:1.</p>
+                                    <h4 className="roadmap-title">Lanzamiento Beta (Founding Members)</h4>
+                                    <p className="roadmap-desc">Entrada de primeros alumnos para validar modelo 1:1.</p>
                                 </div>
                             </div>
-                            <div className="flex gap-4">
-                                <span className="business-text-gold font-bold business-font-cinzel text-xl">04</span>
+                            <div className="roadmap-item">
+                                <span className="roadmap-number">04</span>
                                 <div>
-                                    <h4 className="text-white font-bold business-font-cinzel">Primer Evento Mastermind</h4>
-                                    <p className="text-gray-500 text-sm">Hito clave para tangibilizar el valor del ticket High Ticket.</p>
+                                    <h4 className="roadmap-title">Primer Evento Mastermind</h4>
+                                    <p className="roadmap-desc">Hito clave para tangibilizar el valor del ticket High Ticket.</p>
                                 </div>
                             </div>
                         </div>
