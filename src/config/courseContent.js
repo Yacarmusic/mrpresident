@@ -17,18 +17,13 @@ export const courseContent = [
     },
     {
         id: "modulo-1",
-        title: "MÓDULO 1: LA NATURALEZA DEL PODER",
+        title: "MÓDULO 1: LA GEOGRAFÍA DEL PODER",
         lessons: [
             {
-                id: "bienvenida-mentalidad",
-                title: "Bienvenida y Mentalidad",
+                id: "la-naturaleza-del-poder",
+                title: "La Naturaleza del Poder",
                 vimeoId: "1167196246"
-            },
-            {
-                id: "mapa-relaciones",
-                title: "El Mapa de Relaciones",
-                vimeoId: ""
-            },
+            }
         ]
     },
     {

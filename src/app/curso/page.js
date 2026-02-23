@@ -21,11 +21,11 @@ export default function CourseWelcome() {
                     🎬 MÓDULO 1 YA DISPONIBLE
                 </p>
                 <p style={{ color: '#ccc', marginBottom: '1rem' }}>
-                    El primer módulo — <strong style={{ color: '#fff' }}>GEOGRAFÍA DEL PODER</strong> — ya está listo.
+                    El primer módulo — <strong style={{ color: '#fff' }}>LA GEOGRAFÍA DEL PODER</strong> — ya está listo.
                     Entra y empieza tu formación ahora.
                 </p>
                 <Link
-                    href="/curso/modulo-1/bienvenida-mentalidad"
+                    href="/curso/modulo-1/la-naturaleza-del-poder"
                     style={{
                         display: 'inline-block',
                         padding: '0.6rem 1.5rem',
