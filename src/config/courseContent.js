@@ -18,12 +18,11 @@ export const courseContent = [
     {
         id: "modulo-1",
         title: "MÓDULO 1: LA NATURALEZA DEL PODER",
-        locked: true,
         lessons: [
             {
                 id: "bienvenida-mentalidad",
                 title: "Bienvenida y Mentalidad",
-                vimeoId: ""
+                vimeoId: "1167196246"
             },
             {
                 id: "mapa-relaciones",

@@ -1,9 +1,9 @@
-import TallyEmbed from '@/components/TallyEmbed';
+import Link from 'next/link';
 
 export default function CourseWelcome() {
     return (
         <div className="space-y-6">
-            {/* Important Announcement Banner */}
+            {/* Module 1 Available Alert */}
             <div style={{
                 border: '2px solid #c5a059',
                 borderRadius: '8px',
@@ -18,21 +18,34 @@ export default function CourseWelcome() {
                     marginBottom: '0.5rem',
                     fontFamily: 'var(--font-cinzel)'
                 }}>
-                    🔔 NUEVO VÍDEO CON ANUNCIO IMPORTANTE
+                    🎬 MÓDULO 1 YA DISPONIBLE
                 </p>
-                <p style={{ color: '#ccc', marginBottom: '0' }}>
-                    Hay un nuevo vídeo disponible en la sección de <strong style={{ color: '#fff' }}>Bienvenida</strong>.
-                    Por favor, míralo para estar al tanto de las novedades del curso.
+                <p style={{ color: '#ccc', marginBottom: '1rem' }}>
+                    El primer módulo — <strong style={{ color: '#fff' }}>GEOGRAFÍA DEL PODER</strong> — ya está listo.
+                    Entra y empieza tu formación ahora.
                 </p>
+                <Link
+                    href="/curso/modulo-1/bienvenida-mentalidad"
+                    style={{
+                        display: 'inline-block',
+                        padding: '0.6rem 1.5rem',
+                        backgroundColor: '#c5a059',
+                        color: '#000',
+                        fontWeight: '700',
+                        fontFamily: 'var(--font-cinzel)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em',
+                        fontSize: '0.85rem',
+                        textDecoration: 'none',
+                        transition: 'all 0.3s ease'
+                    }}
+                >
+                    VER MÓDULO 1
+                </Link>
             </div>
 
             <h1 className="text-3xl font-cinzel text-white mb-2">BIENVENIDO AL PODER</h1>
             <p className="text-zinc-400">Selecciona un módulo en el menú de la izquierda para comenzar tu formación.</p>
-
-            {/* Tally Survey Embed */}
-            <div className="mt-8">
-                <TallyEmbed />
-            </div>
         </div>
     );
 }
