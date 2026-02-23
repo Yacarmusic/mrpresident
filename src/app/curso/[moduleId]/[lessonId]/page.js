@@ -32,10 +32,7 @@ export default async function LessonPage({ params }) {
             />
 
             {lesson.professor ? (
-                <div className="mt-8 p-6 bg-zinc-900/50 rounded-lg border border-zinc-800 flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#c5a059]/20 flex items-center justify-center text-[#c5a059] font-bold text-lg" style={{ fontFamily: 'var(--font-cinzel)' }}>
-                        {lesson.professor.charAt(0)}
-                    </div>
+                <div className="mt-8 p-6 bg-zinc-900/50 rounded-lg border border-zinc-800">
                     <div>
                         <p className="text-zinc-500 text-xs uppercase tracking-wider mb-1">Profesor</p>
                         <p className="text-white font-bold" style={{ fontFamily: 'var(--font-cinzel)' }}>{lesson.professor}</p>
