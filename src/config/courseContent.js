@@ -22,7 +22,8 @@ export const courseContent = [
             {
                 id: "la-naturaleza-del-poder",
                 title: "La Naturaleza del Poder",
-                vimeoId: "1167196246"
+                vimeoId: "1167196246",
+                professor: "Felipe Debasa"
             }
         ]
     },
