@@ -1,4 +1,4 @@
-dexport const courseContent = [
+export const courseContent = [
     {
         id: "modulo-0",
         title: "MÓDULO 0: BIENVENIDA DE MR. PRESIDENT",
