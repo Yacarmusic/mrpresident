@@ -36,6 +36,9 @@ export default async function LessonPage({ params }) {
                     <div>
                         <p className="text-zinc-500 text-xs uppercase tracking-wider mb-1">Profesor</p>
                         <p className="text-white font-bold" style={{ fontFamily: 'var(--font-cinzel)' }}>{lesson.professor}</p>
+                        {lesson.professorDesc && (
+                            <p className="text-zinc-400 text-sm mt-1">{lesson.professorDesc}</p>
+                        )}
                     </div>
                 </div>
             ) : (
