@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
-import { CheckCircle2, Circle, Menu, X, Lock } from 'lucide-react';
+import { CheckCircle2, Circle, Menu, X, Lock, ChevronDown, ChevronRight } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import './curso.css'; // Import custom CSS
 
@@ -12,6 +12,41 @@ export default function CourseLayout({ children }) {
     const { user, isLoaded } = useUser();
     const pathname = usePathname();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
+    // Determine which module is active based on the current path
+    const activeModuleId = React.useMemo(() => {
+        const match = pathname.match(/\/curso\/([^/]+)/);
+        return match ? match[1] : null;
+    }, [pathname]);
+
+    // Track expanded modules - auto-expand the active module
+    const [expandedModules, setExpandedModules] = React.useState(() => {
+        // Start with active module expanded, or modulo-0 if on welcome page
+        return new Set(activeModuleId ? [activeModuleId] : ['modulo-0']);
+    });
+
+    // Update expanded when navigating to a different module
+    React.useEffect(() => {
+        if (activeModuleId) {
+            setExpandedModules(prev => {
+                const next = new Set(prev);
+                next.add(activeModuleId);
+                return next;
+            });
+        }
+    }, [activeModuleId]);
+
+    const toggleModule = (moduleId) => {
+        setExpandedModules(prev => {
+            const next = new Set(prev);
+            if (next.has(moduleId)) {
+                next.delete(moduleId);
+            } else {
+                next.add(moduleId);
+            }
+            return next;
+        });
+    };
 
     if (!isLoaded) return <div className="flex items-center justify-center min-h-screen bg-black text-gold">Cargando...</div>;
 
@@ -33,42 +68,56 @@ export default function CourseLayout({ children }) {
                 </div>
 
                 <div className="flex-1 overflow-y-auto">
-                    {courseContent.map((module) => (
-                        <div key={module.id} className="module-section">
-                            <h3 className="module-title flex items-center gap-2">
-                                {module.locked && <Lock size={12} className="text-zinc-500" />}
-                                <span className={module.locked ? "opacity-50" : ""}>{module.title}</span>
-                            </h3>
-                            {!module.locked && (
-                                <ul className="lesson-list">
-                                    {module.lessons.map((lesson) => {
-                                        const path = `/curso/${module.id}/${lesson.id}`;
-                                        const isActive = pathname === path;
-                                        const progress = user?.publicMetadata?.progress || {};
-                                        const progressKey = `${module.id}-${lesson.id}`;
-                                        const isCompleted = progress[progressKey] === true;
+                    {courseContent.map((module) => {
+                        const isExpanded = expandedModules.has(module.id);
+                        const hasLessons = !module.locked && module.lessons.length > 0;
 
-                                        return (
-                                            <li key={lesson.id} className="lesson-item">
-                                                <Link
-                                                    href={path}
-                                                    onClick={() => setIsMobileMenuOpen(false)}
-                                                    className={`lesson-link ${isActive ? 'active' : ''}`}
-                                                >
-                                                    {isCompleted ? (
-                                                        <CheckCircle2 size={16} className="text-green-500 shrink-0" />
-                                                    ) : (
-                                                        <Circle size={16} className={`shrink-0 ${isActive ? 'text-gold' : 'text-zinc-600'}`} />
-                                                    )}
-                                                    <span className="truncate">{lesson.title}</span>
-                                                </Link>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            )}
-                        </div>
-                    ))}
+                        return (
+                            <div key={module.id} className="module-section">
+                                <h3
+                                    className={`module-title flex items-center gap-2 ${hasLessons ? 'module-title-clickable' : ''}`}
+                                    onClick={() => hasLessons && toggleModule(module.id)}
+                                >
+                                    {module.locked ? (
+                                        <Lock size={12} className="text-zinc-500 shrink-0" />
+                                    ) : hasLessons ? (
+                                        isExpanded ?
+                                            <ChevronDown size={14} className="text-gold shrink-0" /> :
+                                            <ChevronRight size={14} className="text-zinc-500 shrink-0" />
+                                    ) : null}
+                                    <span className={module.locked ? "opacity-50" : ""}>{module.title}</span>
+                                </h3>
+                                {hasLessons && isExpanded && (
+                                    <ul className="lesson-list">
+                                        {module.lessons.map((lesson) => {
+                                            const path = `/curso/${module.id}/${lesson.id}`;
+                                            const isActive = pathname === path;
+                                            const progress = user?.publicMetadata?.progress || {};
+                                            const progressKey = `${module.id}-${lesson.id}`;
+                                            const isCompleted = progress[progressKey] === true;
+
+                                            return (
+                                                <li key={lesson.id} className="lesson-item">
+                                                    <Link
+                                                        href={path}
+                                                        onClick={() => setIsMobileMenuOpen(false)}
+                                                        className={`lesson-link ${isActive ? 'active' : ''}`}
+                                                    >
+                                                        {isCompleted ? (
+                                                            <CheckCircle2 size={16} className="text-green-500 shrink-0" />
+                                                        ) : (
+                                                            <Circle size={16} className={`shrink-0 ${isActive ? 'text-gold' : 'text-zinc-600'}`} />
+                                                        )}
+                                                        <span className="truncate">{lesson.title}</span>
+                                                    </Link>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                )}
+                            </div>
+                        );
+                    })}
                 </div>
 
                 <div className="user-footer">

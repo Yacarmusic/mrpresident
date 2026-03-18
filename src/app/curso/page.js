@@ -18,54 +18,28 @@ export default function CourseWelcome() {
                     marginBottom: '0.5rem',
                     fontFamily: 'var(--font-cinzel)'
                 }}>
-                    🎬 NUEVO CONTENIDO DISPONIBLE
-                </p>
-                <p style={{ color: '#ccc', marginBottom: '0.5rem' }}>
-                    <strong style={{ color: '#fff' }}>MÓDULO 1: LA GEOGRAFÍA DEL PODER</strong> — 6 lecciones disponibles.
-                </p>
-                <p style={{ color: '#ccc', marginBottom: '0.5rem' }}>
-                    <strong style={{ color: '#fff' }}>🆕 MÓDULO 3: CONSEGUIR TU PADRINO</strong> — 15 lecciones con Adrián Yacar.
+                    🆕 NUEVO CONTENIDO DISPONIBLE
                 </p>
                 <p style={{ color: '#ccc', marginBottom: '1rem' }}>
-                    <strong style={{ color: '#fff' }}>MÓDULO 4: COMUNICACIÓN E INTELIGENCIA EMOCIONAL</strong> — nueva lección disponible.
+                    <strong style={{ color: '#fff' }}>MÓDULO 3: CONSEGUIR TU PADRINO</strong> — 15 lecciones con Adrián Yacar ya disponibles.
                 </p>
-                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                    <Link
-                        href="/curso/modulo-1/la-naturaleza-del-poder"
-                        style={{
-                            display: 'inline-block',
-                            padding: '0.6rem 1.5rem',
-                            backgroundColor: '#c5a059',
-                            color: '#000',
-                            fontWeight: '700',
-                            fontFamily: 'var(--font-cinzel)',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.08em',
-                            fontSize: '0.85rem',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        VER MÓDULO 1
-                    </Link>
-                    <Link
-                        href="/curso/modulo-4/habita-el-poder-en-el-lenguaje"
-                        style={{
-                            display: 'inline-block',
-                            padding: '0.6rem 1.5rem',
-                            backgroundColor: 'transparent',
-                            border: '2px solid #c5a059',
-                            color: '#c5a059',
-                            fontWeight: '700',
-                            fontFamily: 'var(--font-cinzel)',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.08em',
-                            fontSize: '0.85rem',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        VER MÓDULO 4
-                    </Link>
-                </div>
+                <Link
+                    href="/curso/modulo-3/leccion-1"
+                    style={{
+                        display: 'inline-block',
+                        padding: '0.6rem 1.5rem',
+                        backgroundColor: '#c5a059',
+                        color: '#000',
+                        fontWeight: '700',
+                        fontFamily: 'var(--font-cinzel)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em',
+                        fontSize: '0.85rem',
+                        textDecoration: 'none',
+                    }}
+                >
+                    VER MÓDULO 3
+                </Link>
             </div>
 
             <h1 className="text-3xl font-cinzel text-white mb-2">BIENVENIDO AL PODER</h1>

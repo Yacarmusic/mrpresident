@@ -82,6 +82,16 @@
     padding-left: 0.5rem;
 }
 
+.module-title-clickable {
+    cursor: pointer;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+
+.module-title-clickable:hover {
+    color: var(--course-gold);
+}
+
 .lesson-list {
     list-style: none;
     padding: 0;
