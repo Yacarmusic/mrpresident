@@ -21,7 +21,10 @@ export default function CourseWelcome() {
                     🎬 NUEVO CONTENIDO DISPONIBLE
                 </p>
                 <p style={{ color: '#ccc', marginBottom: '0.5rem' }}>
-                    <strong style={{ color: '#fff' }}>MÓDULO 1: LA GEOGRAFÍA DEL PODER</strong> — 6 lecciones disponibles con Felipe Debasa y Luis De Las Heras Vives.
+                    <strong style={{ color: '#fff' }}>MÓDULO 1: LA GEOGRAFÍA DEL PODER</strong> — 6 lecciones disponibles.
+                </p>
+                <p style={{ color: '#ccc', marginBottom: '0.5rem' }}>
+                    <strong style={{ color: '#fff' }}>🆕 MÓDULO 3: CONSEGUIR TU PADRINO</strong> — 15 lecciones con Adrián Yacar.
                 </p>
                 <p style={{ color: '#ccc', marginBottom: '1rem' }}>
                     <strong style={{ color: '#fff' }}>MÓDULO 4: COMUNICACIÓN E INTELIGENCIA EMOCIONAL</strong> — nueva lección disponible.

@@ -71,8 +71,113 @@ export const courseContent = [
     {
         id: "modulo-3",
         title: "MÓDULO 3: CONSEGUIR TU PADRINO",
-        locked: true,
-        lessons: []
+        lessons: [
+            {
+                id: "leccion-1",
+                title: "Lección 1",
+                vimeoId: "1174731352",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-2",
+                title: "Lección 2",
+                vimeoId: "1174731990",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-3",
+                title: "Lección 3",
+                vimeoId: "1174732622",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-4",
+                title: "Lección 4",
+                vimeoId: "1174733048",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-5",
+                title: "Lección 5",
+                vimeoId: "1174733434",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-6",
+                title: "Lección 6",
+                vimeoId: "1174733813",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-7",
+                title: "Lección 7",
+                vimeoId: "1174734332",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-8",
+                title: "Lección 8",
+                vimeoId: "1174734876",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-9",
+                title: "Lección 9",
+                vimeoId: "1174735210",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-10",
+                title: "Lección 10",
+                vimeoId: "1174735637",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-11",
+                title: "Lección 11",
+                vimeoId: "1174736346",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-12",
+                title: "Lección 12",
+                vimeoId: "1174736672",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-13",
+                title: "Lección 13",
+                vimeoId: "1174736965",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-14",
+                title: "Lección 14",
+                vimeoId: "1174737306",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            },
+            {
+                id: "leccion-15",
+                title: "Lección 15",
+                vimeoId: "1174737603",
+                professor: "Adrián Yacar",
+                professorDesc: "Policía Nacional en excedencia y CEO de Next GenIA"
+            }
+        ]
     },
     {
         id: "modulo-4",
