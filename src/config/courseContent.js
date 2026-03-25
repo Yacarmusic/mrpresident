@@ -195,8 +195,14 @@ export const courseContent = [
     {
         id: "modulo-5",
         title: "MÓDULO 5: CONOCIMIENTO CULTURAL MÍNIMO",
-        locked: true,
-        lessons: []
+        lessons: [
+            {
+                id: "kit-conocimiento-minimo-pedro-banos",
+                title: "Kit Conocimiento Mínimo con Pedro Baños",
+                vimeoId: "1174765519",
+                professor: "Coronel Pedro Baños y Francisco Nicolás"
+            }
+        ]
     }
 ];
 

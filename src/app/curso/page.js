@@ -21,10 +21,10 @@ export default function CourseWelcome() {
                     🆕 NUEVO CONTENIDO DISPONIBLE
                 </p>
                 <p style={{ color: '#ccc', marginBottom: '1rem' }}>
-                    <strong style={{ color: '#fff' }}>MÓDULO 3: CONSEGUIR TU PADRINO</strong> — 15 lecciones con Adrián Yacar ya disponibles.
+                    <strong style={{ color: '#fff' }}>MÓDULO 5: CONOCIMIENTO CULTURAL MÍNIMO</strong> — Kit Conocimiento Mínimo con el Coronel Pedro Baños y Francisco Nicolás.
                 </p>
                 <Link
-                    href="/curso/modulo-3/leccion-1"
+                    href="/curso/modulo-5/kit-conocimiento-minimo-pedro-banos"
                     style={{
                         display: 'inline-block',
                         padding: '0.6rem 1.5rem',
@@ -38,7 +38,7 @@ export default function CourseWelcome() {
                         textDecoration: 'none',
                     }}
                 >
-                    VER MÓDULO 3
+                    VER MÓDULO 5
                 </Link>
             </div>
 
